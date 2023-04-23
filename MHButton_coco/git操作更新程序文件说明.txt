@@ -1,0 +1,24 @@
+git status
+查看当前状态 非必须
+
+git add ./
+add后面根路径 ./表示当前文件夹所有
+
+git status
+查看当前状态 非必须
+
+git commit -m '写自己这次更改的注释原因'
+确认把改变的放入待更新缓存区
+
+
+git status
+查看当前状态 非必须
+
+git push
+真正的更新到远程仓库
+
+
+
+
+
+

@@ -1,0 +1,12 @@
+001\port.o: ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM0/port.c
+001\port.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h
+001\port.o: C:\MDK535\ARM\ARMCC\Bin\..\include\stddef.h
+001\port.o: C:\MDK535\ARM\ARMCC\Bin\..\include\stdint.h
+001\port.o: ../Core/Inc/FreeRTOSConfig.h
+001\port.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/projdefs.h
+001\port.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/portable.h
+001\port.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/deprecated_definitions.h
+001\port.o: ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM0/portmacro.h
+001\port.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/mpu_wrappers.h
+001\port.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/task.h
+001\port.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/list.h
