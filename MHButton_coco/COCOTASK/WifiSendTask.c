@@ -85,10 +85,10 @@ void WifiSendTask(void *argument)
                 {
                     sprintf((char*)at_buff,"AT+CIPSEND=0,%d",lenNum);
             
-                    g_atk_mw8266d_send_CIPSEND_cmd(at_buff,"OK",100);  //发送指定长度的数据
-                    osDelay(50); 
+                    g_atk_mw8266d_send_CIPSEND_cmd(at_buff,"OK",200);  //发送指定长度的数据  /100
+                    osDelay(50); //50
                     HAL_UART_Transmit(&huart4,(&g_wifiSendbuff[msg][2]), lenNum, 10);
-                    
+                    osDelay(200); //0
 //                     statusDat=HAL_UART_Transmit(&huart4,(&g_wifiSendbuff[msg][2]), lenNum, 10);
 //                     do
 //                     {

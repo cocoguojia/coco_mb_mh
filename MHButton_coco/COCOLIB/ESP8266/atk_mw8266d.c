@@ -19,10 +19,14 @@
 uint8_t AT_MW8266_InitSub(void);
 uint8_t atk_mw8266d_monitor(void);
 uint8_t atk_mw8266d_send_CIPSEND_cmd(char* cmd,char* ack,uint16_t timeout);
+uint16_t strIptoNum255(char *str);
+uint8_t strIpSub(char *comRet,uint8_t n);
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //内部静态变量
 #define AT_CIPSTATUS_N (g_at_cipstart_n+1)
+#define AT_CIFSR_N (g_at_cipstart_n+2)
+
 char *CMDretFirst = NULL;
 char *CMDret = NULL;
 
@@ -54,7 +58,9 @@ void AT_MW8266_strcut_init(void);
 uint8_t atk_mw8266d_monitor_second(void);
 uint8_t atk_mw8266dSendAtCmdStatus(AT_MW8266_strcutDef *t);
 
+uint8_t charIpDoSubxxx(char *comRet,uint8_t n,uint8_t *WriteToTable);
 
+uint8_t atk_mw8266dSendAtCmdIP(AT_MW8266_strcutDef *t);
 
 
 
@@ -85,6 +91,31 @@ uint8_t g_atk_AT_MW8266_InitSub(void)
     return ret;
 }
 
+//----------------------------------------------------------------------------------------------------------------------------------
+//wifi模块 获取IP程序段 cocoguojia 待加
+uint8_t g_atk_mw8266d_getApStaIp(void)
+{
+    App_Printf("$$//########################\r\n"); 
+    if(1==g_dhcpip_staticip_flag)
+    {
+        App_Printf("$$IP is DHCP IP\r\n"); 
+        atk_mw8266d_uart_rx_restart();
+        if(ATK_MW8266D_EOK!=atk_mw8266dSendAtCmdIP(&AT_MW8266_strcut[AT_CIFSR_N]))
+        {            
+            App_Printf("$$IP show is Err\r\n");                        
+        }
+        else
+        {      
+            App_Printf("$$IP show is OK\r\n");         
+        }
+    }
+    else
+    {
+         
+         App_Printf("$$IP is static IP\r\n"); 
+    }
+}
+
 
 //----------------------------------------------------------------------------------------------------------------------------------
 //wifi模块 运行监控 网络断链要相应的处理一下
@@ -92,12 +123,13 @@ uint8_t g_atk_mw8266d_monitor(void)
 {
     static uint8_t n=0;
     static uint8_t LastStatus=1;        //1=读状态正常  0=状态不正常
-    static uint8_t LastclinkServer=1;   //1=连接服务器正常  0=连接服务器不正常
-    n++;
+    static uint8_t LastclinkServer=1;   //1=连接服务器正常  0=连接服务器不正常    
     uint8_t returnN=0;
+    n++;
     
-    if(20<=n)
-    {
+    if(20<=n)//20
+    { 
+       
         if(ATK_MW8266D_EOK!=atk_mw8266dSendAtCmdStatus(&AT_MW8266_strcut[AT_CIPSTATUS_N]))
         {            
 
@@ -137,7 +169,8 @@ uint8_t g_atk_mw8266d_monitor(void)
             CMDret =CMDretFirst;
             returnN=atk_mw8266d_monitor_second();
         }
-        n=0;
+        n=0;       
+        
     }
     else
     {
@@ -327,6 +360,28 @@ uint8_t atk_mw8266d_monitor_second(void)
     return 0;
 }
 
+//+CIFSR:APIP,"192.168.1.1"
+//+CIFSR:APMAC,"b6:8a:0a:ed:5b:27"
+//+CIFSR:STAIP,"192.168.43.182"
+//+CIFSR:STAMAC,"b4:8a:0a:ed:5b:27"
+uint8_t atk_mw8266dSendAtCmdIP(AT_MW8266_strcutDef *t)
+{   
+    atk_mw8266d_uart_printf("%s\r\n", t->cmd);
+    osDelay(200);
+    CMDretFirst = (char *)atk_mw8266d_uart_rx_get_frame();
+    if (strstr((const char *)CMDretFirst, t->ack) != NULL)
+    {
+        charIpDoSubxxx(CMDretFirst,3,(uint8_t*)&g_wifi_sta_dhcpIp_temp[0]);
+        App_Printf("$$####STA IP->%d,%d,%d,%d\r\n",g_wifi_sta_dhcpIp_temp[0],g_wifi_sta_dhcpIp_temp[1],g_wifi_sta_dhcpIp_temp[2],g_wifi_sta_dhcpIp_temp[3]);
+        atk_mw8266d_uart_rx_restart();
+        return ATK_MW8266D_EOK;
+    }
+    else
+    {
+        ;
+    }
+    return ATK_MW8266D_ETIMEOUT;
+}
 
 uint8_t atk_mw8266dSendAtCmdStatus(AT_MW8266_strcutDef *t)
 {   
@@ -421,9 +476,11 @@ char cmdTableStrMODEX[15];
 char cmdTable_CIPSTA[70];
 char cmdTable_CIPAP[70];
 char cmdTable_CWSAP[70];
-char cmdTable_CWJAP[70];
+char cmdTable_CWJAP[85];
 char cmdTable_CIPSERVER[20];
 char cmdTable_CIPSTART[70];
+char cmdTable_CWDHCP[20];
+
 
 
 void AT_MW8266_strcut_init(void)
@@ -489,7 +546,7 @@ void AT_MW8266_strcut_init(void)
     AT_MW8266_strcut[i].ack="OK";
     AT_MW8266_strcut[i].timeout=500;
     AT_MW8266_strcut[i].afterDelayMs=1000;
-    AT_MW8266_strcut[i].special_n=1;      
+//    AT_MW8266_strcut[i].special_n=1;      
     switch(WIFI_ATE_CMD_N)
     {
         case 0:
@@ -509,22 +566,34 @@ void AT_MW8266_strcut_init(void)
     }    
     i++;
     
-    //------------------------------------------------------------------
-    //发送 设置sta参数 指令
-    AT_MW8266_strcut[i].ack="OK";
-    AT_MW8266_strcut[i].timeout=1000;
-    AT_MW8266_strcut[i].afterDelayMs=2000;
-    AT_MW8266_strcut[i].special_char1=g_wifi_sta_ip_temp;
-    AT_MW8266_strcut[i].special_char2=g_wifi_sta_gw_temp;
-    AT_MW8266_strcut[i].special_char3=g_wifi_sta_sn_temp;
-    sprintf(cmdTable_CIPSTA,"AT+CIPSTA=\"%d.%d.%d.%d\",\"%d.%d.%d.%d\",\"%d.%d.%d.%d\"", \
-    AT_MW8266_strcut[i].special_char1[0],AT_MW8266_strcut[i].special_char1[1],AT_MW8266_strcut[i].special_char1[2],AT_MW8266_strcut[i].special_char1[3], \
-    AT_MW8266_strcut[i].special_char2[0],AT_MW8266_strcut[i].special_char2[1],AT_MW8266_strcut[i].special_char2[2],AT_MW8266_strcut[i].special_char2[3], \
-    AT_MW8266_strcut[i].special_char3[0],AT_MW8266_strcut[i].special_char3[1],AT_MW8266_strcut[i].special_char3[2],AT_MW8266_strcut[i].special_char3[3]);  
-    AT_MW8266_strcut[i].cmd=cmdTable_CIPSTA; 
-    i++;
-
-
+    if(0==g_dhcpip_staticip_flag)//WIFI 自身为静态IP
+    {
+        //------------------------------------------------------------------
+        //发送 设置sta参数 指令
+        AT_MW8266_strcut[i].ack="OK";
+        AT_MW8266_strcut[i].timeout=1000;
+        AT_MW8266_strcut[i].afterDelayMs=2000;
+        AT_MW8266_strcut[i].special_char1=g_wifi_sta_ip_temp;
+        AT_MW8266_strcut[i].special_char2=g_wifi_sta_gw_temp;
+        AT_MW8266_strcut[i].special_char3=g_wifi_sta_sn_temp;
+        sprintf(cmdTable_CIPSTA,"AT+CIPSTA=\"%d.%d.%d.%d\",\"%d.%d.%d.%d\",\"%d.%d.%d.%d\"", \
+        AT_MW8266_strcut[i].special_char1[0],AT_MW8266_strcut[i].special_char1[1],AT_MW8266_strcut[i].special_char1[2],AT_MW8266_strcut[i].special_char1[3], \
+        AT_MW8266_strcut[i].special_char2[0],AT_MW8266_strcut[i].special_char2[1],AT_MW8266_strcut[i].special_char2[2],AT_MW8266_strcut[i].special_char2[3], \
+        AT_MW8266_strcut[i].special_char3[0],AT_MW8266_strcut[i].special_char3[1],AT_MW8266_strcut[i].special_char3[2],AT_MW8266_strcut[i].special_char3[3]);  
+        AT_MW8266_strcut[i].cmd=cmdTable_CIPSTA; 
+        i++;
+    }
+    else//WIFI DHCP 模式开启
+    {
+        //------------------------------------------------------------------
+        //发送 设置sta DHCP 指令
+        AT_MW8266_strcut[i].ack="OK";
+        AT_MW8266_strcut[i].timeout=2000;
+        AT_MW8266_strcut[i].afterDelayMs=200;
+        sprintf(cmdTable_CWDHCP,"AT+CWDHCP=1,1"); 
+        AT_MW8266_strcut[i].cmd=cmdTable_CWDHCP; 
+        i++;
+    }
     
     //------------------------------------------------------------------
     //发送 设置AP参数 指令
@@ -566,7 +635,7 @@ void AT_MW8266_strcut_init(void)
     AT_MW8266_strcut[i].cmd=cmdTable_CWJAP;  
     i++;
     
-    //------------------------------------------------------------------
+    //---------------------------------------------------------------------------------------
     //发送  ATK-MW8266开启双链接 指令
     AT_MW8266_strcut[i].cmd="AT+CIPMUX=1";
     AT_MW8266_strcut[i].ack="OK";
@@ -574,29 +643,28 @@ void AT_MW8266_strcut_init(void)
     AT_MW8266_strcut[i].afterDelayMs=500;
     i++;
     
-    //------------------------------------------------------------------
+    //-------------------------------------------------------------------------------------
     //发送  建立服务器的端口 指令
     AT_MW8266_strcut[i].ack="OK";
     AT_MW8266_strcut[i].timeout=200;
     AT_MW8266_strcut[i].afterDelayMs=500;
     AT_MW8266_strcut[i].special_char1=g_wifi_sta_sever_port_temp;
     sprintf(cmdTable_CIPSERVER,"AT+CIPSERVER=1,%s",AT_MW8266_strcut[i].special_char1);
-    AT_MW8266_strcut[i].cmd=cmdTable_CIPSERVER; 
-        
+    AT_MW8266_strcut[i].cmd=cmdTable_CIPSERVER;         
     i++;
     
-    //------------------------------------------------------------------
-    //发送  设置服务器超时时间，超时后断开客户端的连接 指令 设置了10s
-    AT_MW8266_strcut[i].cmd="AT+CIPSTO=10";
+    //-------------------------------------------------------------------------------------
+    //发送  设置服务器超时时间，超时后断开客户端的连接 指    
+    //WIFI作为服务器多长了时间clink都没发数据 则会把它踢掉 单位秒  目前默认6分钟即360秒
+    AT_MW8266_strcut[i].cmd="AT+CIPSTO=360";
     AT_MW8266_strcut[i].ack="OK";
     AT_MW8266_strcut[i].timeout=200;
     AT_MW8266_strcut[i].afterDelayMs=500;
-    
     g_at_cipstart_n=i; 
     App_Printf("$$ the g_at_cipstart_n=%d\r\n",g_at_cipstart_n);  
     i++;
     
-//    //------------------------------------------------------------------
+//    //-------------------------------------------------------------------------------------
 //    //发送 连接服务器 指令
 //    AT_MW8266_strcut[i].ack="OK";
 //    AT_MW8266_strcut[i].timeout=2000;
@@ -616,6 +684,116 @@ void AT_MW8266_strcut_init(void)
     AT_MW8266_strcut[i].timeout=500;
     AT_MW8266_strcut[i].afterDelayMs=500;
     i++;
+    
+    //------------------------------------------------------------------
+    //发送  查询当前IP
+    AT_MW8266_strcut[i].cmd="AT+CIFSR";
+    AT_MW8266_strcut[i].ack="OK";
+//    AT_MW8266_strcut[i].special_n=0x0A;//取IP专属 值
+    AT_MW8266_strcut[i].timeout=2000;
+    AT_MW8266_strcut[i].afterDelayMs=500;
+    i++;
        
     atk_mw8266d_uart_rx_restart();    
 }
+
+
+
+//---------------------------------------------------------------------------------------------------------
+//解析xxx xxx xxx xxx 这里是对获取到的IP进行了切割和处理 最终取值赋值给g_wifi_sta_dhcpIp_temp
+//char *comRet:要解析的字符串指针
+//uint8_t n : 第n个次切割的字符串开始有意义 n要大于等于1
+//返回 0=成功 1=失败
+uint8_t charIpDoSubxxx(char *comRet,uint8_t n,uint8_t *WriteToTable)
+{
+       uint8_t charTable[5]={0,0,0,0,0};
+       char *cmdTemp=comRet;
+       char *cmdTemp1;
+       char *cmdTemp2;
+       uint8_t m=0;
+       uint8_t k=0;
+       uint8_t i=0;
+       uint16_t j=0;
+       if(1<=n)
+       {
+            n--;
+       }
+       else
+       {
+          return 1;
+       }
+      
+      //--------------------------------------------------------------------------
+      //该函数返回
+      //第一次切割后的字符串 切割后 该整体要切割的字符串已经在strtok函数里有了记录    
+      App_Printf("$$%s\r\n",strtok((char *)cmdTemp,(const char*)"+"));
+
+      while(cmdTemp1=strtok(NULL,(const char*)"+"))
+      { 
+         m++;          
+         if(n==m)
+         {             
+            App_Printf("$$%s\r\n",cmdTemp1);
+            App_Printf("$$%s\r\n",strtok((char *)cmdTemp1,(const char*)"\""));
+            while(cmdTemp2=strtok(NULL,(const char*)"\"."))
+            { 
+                j=strIptoNum255(cmdTemp2);
+                if(0xffff==j)
+                {
+                    return 1;
+                }
+                else
+                {
+                    charTable[k]=j;
+                }
+                k++;
+                if(4==k)
+                {
+                    for(i=0;i<4;i++)
+                    {
+                        WriteToTable[i]=charTable[i];
+                    }
+                  return 0;
+                }
+            }
+         }
+        
+      }  
+      return 1;      
+}
+
+//--------------------------------------
+//返回 0xffff表示失败 其他是数值
+uint16_t strIptoNum255(char *str)
+{
+    uint16_t ret=0xffff;
+    uint8_t i;
+    uint16_t num=0;
+    for(i=0;i<3;i++)
+    {
+        if(('0'<=*str)&&('9'>=*str))
+        {
+            if(0!=i)
+            {
+                num*=10;
+            }
+            num+=(*str)-'0';          
+        }
+        else if((' '==*str)||('\0'>=*str))
+        {
+            i=100;           
+        }
+        
+        else
+        {
+            return  ret;
+        }
+        str++;
+    }
+    if(255<num)
+    {
+        return  ret;
+    }
+    return  num;   
+}
+

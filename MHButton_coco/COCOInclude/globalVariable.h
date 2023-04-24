@@ -4,7 +4,7 @@
 
 #include "myinclude.h"
 
-#define FIRST_PARAAMETER 0XA1
+#define FIRST_PARAAMETER 0XAC
 
 //-----------------------------------------------------------------------------------------------------------------
 //如果使能锂电池切断功能 请预定义POWER_BATTERY_MANAGEMENT  否则 屏蔽POWER_BATTERY_MANAGEMENT的预定义
@@ -15,6 +15,7 @@
 //有些modbus是从地址0开始的，所以我们在这里做个兼容,cocoguojia say
 //如果地址是从0开始算 那么请使能下面这句;如果地址是从1开始算 那么请屏蔽下面这句，请用双斜杠屏蔽-->//#define MODBUS_ADDR_0    1
 #define MODBUS_ADDR_0    1
+
 
 
 #define TCP_WIFI_SENDLEN    120
@@ -49,17 +50,22 @@ extern uint8_t g_holdingChangeFlag;                     //holding 寄存器改版标志
 extern uint8_t g_at_cipstart_n;//at+cipstart 命令的最终序号
 
 
+extern uint8_t g_dhcpip_staticip_flag;//1=DHCP ip 0=STATIC ip
+
+
 
 ////////////////////////////////////////////////////////////////////////////////////////////
 //wifi模块采用 STA+AP方式
 //------------------------------------------------------
 //wifi STA连接网络参数
-extern char g_wifi_sta_sidd_temp[20];
+extern char g_wifi_sta_sidd_temp[30];
 extern char g_wifi_sta_password_temp[20];
 
 extern char g_wifi_sta_ip_temp[4];
 extern char g_wifi_sta_gw_temp[4];
 extern char g_wifi_sta_sn_temp[4];
+
+extern char g_wifi_sta_dhcpIp_temp[4];
 
 
 //------------------------------------------------------
@@ -149,12 +155,13 @@ extern osMutexId_t W25q64MutexHandle;
 //地址=4096*21 第22扇区 wifi report相关信息 远端端口
 
 //地址=4096*22 第23扇区 wifi en/no相关信息
+//地址=4096*23 第24扇区 wifi dhcp en/no相关信息
 
 
-//地址=4096*29 第30扇区 wifi en/no相关信息
+//地址=4096*29 第30扇区 则是设置过参数 否则默认参数
 
 
-#define WQ_PAGE_DEFAULT          ((uint32_t)(4096*24))
+
 
 #define WQ_PAGE_SW5ROAD3         ((uint32_t)(4096*0))
 
@@ -179,10 +186,11 @@ extern osMutexId_t W25q64MutexHandle;
 #define WQ_PAGE_WIFI_REPORT     ((uint32_t)(4096*21))
 
 #define WQ_PAGE_WIFI_ENNO       ((uint32_t)(4096*22))
+#define WQ_PAGE_WIFI_DHCP_ENNO  ((uint32_t)(4096*23))
 
 //---------------------------------------------------
-//为0XAA 则是设置过参数 否则默认参数
-#define WQ_PAGE_DEFAULT        ((uint32_t)(4096*24))
+//是设置过参数 否则默认参数
+#define WQ_PAGE_DEFAULT        ((uint32_t)(4096*29))
 
 
 extern const uint8_t wdth_showTable0[];
@@ -212,10 +220,11 @@ extern const uint8_t wifih_showTable8[];
 extern const uint8_t wifih_showTable9[];
 extern const uint8_t wifih_showTable10[];
 extern const uint8_t wifih_showTable11[];
-//extern const uint8_t wifih_showTable12[];
+extern const uint8_t wifih_showTable12[];
 extern const uint8_t wifih_showTable13[];
 extern const uint8_t wifih_showTable14[];
 extern const uint8_t wifih_showTable15[];
+extern const uint8_t wifih_showTable16[];
 
 
 

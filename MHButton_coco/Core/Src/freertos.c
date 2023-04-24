@@ -398,7 +398,7 @@ void PowerOnAfterReadParameter(void)
 
     uint8_t m;   
     uint8_t clearFlag=0;//1=发生了断电 读完参后 我清零 
-    uint8_t table[20];
+    uint8_t table[30];
  
     //##############################################################################################
     //互斥操作
@@ -554,16 +554,16 @@ void PowerOnAfterReadParameter(void)
         }
         
         //---------------------------------------------------
-        //wifi staid 不超过12位
-        W25Q128_Read(&table[0],WQ_PAGE_WIFI_STASSID,13);
-        for(m=0;m<12;m++)
+        //wifi staid 不超过25位
+        W25Q128_Read(&table[0],WQ_PAGE_WIFI_STASSID,26);
+        for(m=0;m<25;m++)
         {
             if(0xff==table[m])
             {
                 table[m]=0;
             }
         }
-        table[12]=0;
+        table[25]=0;
         strcpy(g_wifi_sta_sidd_temp,(const char*)&table[0]);
         
         //---------------------------------------------------
@@ -628,6 +628,16 @@ void PowerOnAfterReadParameter(void)
         else
         {
             g_wifiEnFlag=1;
+        }
+        
+        W25Q128_Read(&table[0],WQ_PAGE_WIFI_DHCP_ENNO,1);
+        if(0==table[0])
+        {
+            g_dhcpip_staticip_flag=0;
+        }
+        else
+        {
+            g_dhcpip_staticip_flag=1;
         }
         
         
@@ -701,6 +711,8 @@ void PowerOnAfterReadParameter(void)
 //        g_wifi_sta_sever_ip_temp[3]=52;
         strcpy(g_wifi_sta_sever_port_temp,"6800");
         
+        g_dhcpip_staticip_flag=1;
+        
         g_wifiEnFlag=1;
         
         //##############################################################################################
@@ -749,7 +761,10 @@ void PowerOnAfterReadParameter(void)
         W25Q128_Write((uint8_t*)&g_wifi_sta_sever_port_temp[0],WQ_PAGE_WIFI_REPORT,strlen(&g_wifi_sta_sever_port_temp[0])+1); 
       
         W25Q128_Erase_Sector(WQ_PAGE_WIFI_ENNO);  
-        W25Q128_Write(&g_w5500EnFlag,WQ_PAGE_WIFI_ENNO,g_wifiEnFlag); 
+        W25Q128_Write(&g_wifiEnFlag,WQ_PAGE_WIFI_ENNO,1); 
+        
+        W25Q128_Erase_Sector(WQ_PAGE_WIFI_DHCP_ENNO);  
+        W25Q128_Write(&g_dhcpip_staticip_flag,WQ_PAGE_WIFI_DHCP_ENNO,1); 
 
 
         table[0]=FIRST_PARAAMETER;
@@ -850,7 +865,7 @@ void PowerOnAfterReadParameter(void)
     App_Printf("WIFI STASN=%d.%d.%d.%d\r\n",g_wifi_sta_sn_temp[0],g_wifi_sta_sn_temp[1],g_wifi_sta_sn_temp[2],g_wifi_sta_sn_temp[3]);
     App_Printf("WIFI STAGW=%d.%d.%d.%d\r\n",g_wifi_sta_gw_temp[0],g_wifi_sta_gw_temp[1],g_wifi_sta_gw_temp[2],g_wifi_sta_gw_temp[3]);
     
-//    App_Printf("WIFI REIP=%d.%d.%d.%d\r\n",g_wifi_sta_sever_ip_temp[0],g_wifi_sta_sever_ip_temp[1],g_wifi_sta_sever_ip_temp[2],g_wifi_sta_sever_ip_temp[3]);
+    //App_Printf("WIFI REIP=%d.%d.%d.%d\r\n",g_wifi_sta_sever_ip_temp[0],g_wifi_sta_sever_ip_temp[1],g_wifi_sta_sever_ip_temp[2],g_wifi_sta_sever_ip_temp[3]);
     App_Printf("WIFI REPORT=%s\r\n",g_wifi_sta_sever_port_temp);
       
     if(1==g_wifiEnFlag)

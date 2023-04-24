@@ -33,6 +33,7 @@ void WifiTask(void *argument)
     uint8_t ret=0;
     uint16_t i=1;
 
+
     
     HAL_GPIO_WritePin(WIFI_EN_GPIO_Port, WIFI_EN_Pin, GPIO_PIN_RESET);
     osDelay(500);
@@ -66,10 +67,15 @@ void WifiTask(void *argument)
             
             g_openFreeModbusFlag=1;     //wifi初始化完成 置位 1=开启FreeModbus功能 
             App_Printf("$$wifi init is OK, modbus code En\r\n"); 
-            osDelay(200);
+            osDelay(1000);
+            
+            g_atk_mw8266d_getApStaIp();
+            
+             
         }
         
         runInitFlag=g_atk_mw8266d_monitor();//当函数返回1 则表示出现重大错误 要重新初始化
         osDelay(100);
+      
     }
 }

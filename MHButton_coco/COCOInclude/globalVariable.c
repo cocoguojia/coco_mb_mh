@@ -49,12 +49,15 @@ char g_wifi_ap_sn_temp[4]={255,255,255,0};
 //wifi模块采用 STA+AP方式
 //------------------------------------------------------
 //wifi STA连接网络参数
-char g_wifi_sta_sidd_temp[20]={"HONOR990"};
+char g_wifi_sta_sidd_temp[30]={"HONOR990"};
 char g_wifi_sta_password_temp[20]={"123400789"};
 
 char g_wifi_sta_ip_temp[4]={192,168,43,2};
 char g_wifi_sta_gw_temp[4]={192,168,43,1};
 char g_wifi_sta_sn_temp[4]={255,255,255,0};
+
+
+char g_wifi_sta_dhcpIp_temp[4]={0,0,0,0};
 
 
 //------------------------------------------------------
@@ -97,6 +100,8 @@ uint8_t g_readingRX8025TimerFlag=0;//0=当前时间可以占用 注意占用就置位 然后释放 
 uint8_t g_w5500EnFlag=1;//1=W5500模块使能
 uint8_t g_wifiEnFlag=1;//1=Wifi模块使能
 
+uint8_t g_dhcpip_staticip_flag=0;   //1=DHCP ip     0=STATIC ip
+
 
 const uint8_t wdth_showTable0[]="----------------wdt-----------------";
 const uint8_t wdth_showTable1[]="wdt h------ show wdt cmd";
@@ -125,10 +130,11 @@ const uint8_t wifih_showTable8[] ="wifi stakey xxxx----------- max len=12";
 const uint8_t wifih_showTable9[] ="wifi staip xxx xxx xxx xxx-- set staip";
 const uint8_t wifih_showTable10[]="wifi staip xxx xxx xxx xxx-- set staip";
 const uint8_t wifih_showTable11[]="wifi staip xxx xxx xxx xxx-- set staip";
-//const uint8_t wifih_showTable12[]="wifi reip xxx xxx xxx xxx---- set reip";
-const uint8_t wifih_showTable13[]="wifi report xxxx- set report max len=8";
-const uint8_t wifih_showTable14[]="wifi en------------------- enable wifi";
-const uint8_t wifih_showTable15[]="wifi no------------------ disable wifi";
+const uint8_t wifih_showTable12[]="wifi report xxxx- set report max len=8";
+const uint8_t wifih_showTable13[]="wifi dhcp en--------- enable wifi dhcp";
+const uint8_t wifih_showTable14[]="wifi dhcp no-------- disable wifi dhcp";
+const uint8_t wifih_showTable15[]="wifi en------------------- enable wifi";
+const uint8_t wifih_showTable16[]="wifi no------------------ disable wifi";
 
 
 

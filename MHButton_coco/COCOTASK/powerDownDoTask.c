@@ -49,10 +49,10 @@ void PowerDownDoTask(void *argument)
                    //App_Printf("$$POWEN DOWN,Save Parameter is OK1\r\n"); 
                }
                             
-               //---------------------------------------------------------------------------
-               //掉电了 小灯指示一下 弱亮闪烁10次
-               i=10;
-               while(i--)
+              //---------------------------------------------------------------------------
+              //掉电了 小灯指示一下 弱亮闪烁10次
+              i=10;
+              while(i--)
               {
                     HAL_GPIO_WritePin(LEDB_GPIO_Port, LEDB_Pin, GPIO_PIN_RESET);
                     osDelay(5);

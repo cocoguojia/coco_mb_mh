@@ -89,14 +89,16 @@ void cmd_wdt_send_Data(char* str,uint16_t len,uint8_t TcpOrWifi);
 void sendcmdH(const uint8_t *str,uint8_t g_tcpOrwifiFlag);
 uint8_t strDoSubxxx(char *comRet,uint8_t n,uint8_t *WriteToTable,uint8_t maxlen,uint8_t lenstatic,uint8_t numFlag);
 
+uint8_t charDoSubxxx(char *comRet,uint8_t n,uint8_t *WriteToTable);
+
 uint8_t setTimerxxxxxxx(char *comRet,uint8_t n);
 
-#define USER_CMD_X 30
+#define USER_CMD_X 32
 #define USER_CMD_Y 50
 const char  USER_CMD_TABLE[USER_CMD_X][USER_CMD_Y]= { \
 "wdt h","wdt en 0","wdt en 1", \
 "w5500 h","w5500 ip","w5500 sn","w5500 gw","w5500 info","w5500 clear","w5500 en","w5500 no", \
-"wifi h","wifi apid","wifi apkey","wifi apip","wifi apsn","wifi apgw","wifi stassid","wifi stakey","wifi staip","wifi stasn","wifi stagw","wifi reip","wifi report","wifi info","wifi en","wifi no", \
+"wifi h","wifi apid","wifi apkey","wifi apip","wifi apsn","wifi apgw","wifi stassid","wifi stakey","wifi staip","wifi stasn","wifi stagw","wifi reip","wifi report","wifi info","wifi en","wifi no", "wifi dhcp en","wifi dhcp no",\
 "clk h","clk set","clk view" \
 };
 
@@ -295,15 +297,22 @@ uint8_t g_analysisUserCmdSub(uint16_t lenN,uint8_t msgN,uint8_t TcpOrWifi)
                      case 26:
                      cmd_wifi(15,TcpOrWifi);
                      break;
-                     
-                     
                      case 27:
-                     cmd_clk(0,TcpOrWifi);
+                     cmd_wifi(16,TcpOrWifi);
                      break;
                      case 28:
+                     cmd_wifi(17,TcpOrWifi);
+                     break;
+                       
+                     
+                     
+                     case 29:
+                     cmd_clk(0,TcpOrWifi);
+                     break;
+                     case 30:
                      cmd_clk(1,TcpOrWifi);
                      break;                 
-                     case 29:
+                     case 31:
                      cmd_clk(2,TcpOrWifi);
                      break;
                      
@@ -324,7 +333,7 @@ uint8_t g_analysisUserCmdSub(uint16_t lenN,uint8_t msgN,uint8_t TcpOrWifi)
 }
 
 
-uint8_t charDoSubxxx(char *comRet,uint8_t n,uint8_t *WriteToTable);
+
 
 //msg 特殊发送定义
 //0xA1 发送 wdt h 查询结果
@@ -544,10 +553,10 @@ void cmd_wifi(uint8_t n,uint8_t TcpOrWifi)
 {
     uint16_t wifiMsg;
     uint16_t w5500Msg;
-       char table[80];
+    char table[90];
     uint8_t i=0;
      uint8_t len=0;
-    uint8_t save_Buffer[22];//22
+    uint8_t save_Buffer[30];//22
     switch(n)
     {
         case 0:             //查看命令 w5500 h     
@@ -690,11 +699,11 @@ void cmd_wifi(uint8_t n,uint8_t TcpOrWifi)
         break;
         
         case 6:            
-        if(0==strDoSubxxx(comRet,3,(uint8_t*)g_wifi_sta_sidd_temp,12,0,0))
+        if(0==strDoSubxxx(comRet,3,(uint8_t*)g_wifi_sta_sidd_temp,25,0,0))
         {
             App_Printf("set wifi sta ssid=%s\r\n",&g_wifi_sta_sidd_temp);
             len=strlen(&g_wifi_sta_sidd_temp[0]);
-            if(12>=len)
+            if(25>=len)
             {
                 for(i=0;i<len;i++)
                 {
@@ -789,7 +798,7 @@ void cmd_wifi(uint8_t n,uint8_t TcpOrWifi)
         break;
         
         case 10://设置wifi stagw
-        if(0==charDoSubxxx(comRet,3,(uint8_t*)&g_wifi_sta_sn_temp[0]))
+        if(0==charDoSubxxx(comRet,3,(uint8_t*)&g_wifi_sta_gw_temp[0]))
         {
             App_Printf("set wifi stagw=%d.%d.%d.%d\r\n",g_wifi_sta_gw_temp[0],g_wifi_sta_gw_temp[1],g_wifi_sta_gw_temp[2],g_wifi_sta_gw_temp[3]);
 
@@ -918,6 +927,48 @@ void cmd_wifi(uint8_t n,uint8_t TcpOrWifi)
         HAL_NVIC_SystemReset();
         taskEXIT_CRITICAL();
         osDelay(500);        
+        break;
+        
+        case 16://dhcp en
+        //使能wifi dhcp       
+        cmd_wdt_send_Data("wifi dhcp en",0,TcpOrWifi);
+        save_Buffer[0]=1;
+        //##############################################################################################
+        //互斥操作
+        osMutexAcquire(W25q64MutexHandle, osWaitForever);   //一直等待获取互斥资源 
+        W25Q128_Erase_Sector(WQ_PAGE_WIFI_DHCP_ENNO);  
+        W25Q128_Write(&save_Buffer[0],WQ_PAGE_WIFI_DHCP_ENNO,1); 
+        osMutexRelease(W25q64MutexHandle);                  //释放互斥资源    
+        //##############################################################################################    
+        osDelay(100); 
+        
+//        //---------------------------------------------------------------
+//        //复位
+//        taskENTER_CRITICAL();
+//        HAL_NVIC_SystemReset();
+//        taskEXIT_CRITICAL();
+//        osDelay(500);        
+        break;
+        
+        case 17://dhcp no
+        //禁止wifi dhcp
+        cmd_wdt_send_Data("wifi dhcp no",0,TcpOrWifi);
+        save_Buffer[0]=0;
+        //##############################################################################################
+        //互斥操作
+        osMutexAcquire(W25q64MutexHandle, osWaitForever);   //一直等待获取互斥资源 
+        W25Q128_Erase_Sector(WQ_PAGE_WIFI_DHCP_ENNO);  
+        W25Q128_Write(&save_Buffer[0],WQ_PAGE_WIFI_DHCP_ENNO,1); 
+        osMutexRelease(W25q64MutexHandle);                  //释放互斥资源    
+        //##############################################################################################    
+        osDelay(100); 
+        
+//        //---------------------------------------------------------------
+//        //复位
+//        taskENTER_CRITICAL();
+//        HAL_NVIC_SystemReset();
+//        taskEXIT_CRITICAL();
+//        osDelay(500);        
         break;
   
 
@@ -1345,7 +1396,7 @@ uint8_t strDoSubxxx(char *comRet,uint8_t n,uint8_t *WriteToTable,uint8_t maxlen,
 void g_showCmdH(uint8_t i,uint8_t g_tcpOrwifiFlag)
 {
     uint8_t weekTemp;
-    char table[80];
+    char table[90];
     if(0XA1==i)
     {
         sendcmdH(wdth_showTable0,g_tcpOrwifiFlag);
@@ -1387,10 +1438,11 @@ void g_showCmdH(uint8_t i,uint8_t g_tcpOrwifiFlag)
         sendcmdH(wifih_showTable9,g_tcpOrwifiFlag);
         sendcmdH(wifih_showTable10,g_tcpOrwifiFlag); 
         sendcmdH(wifih_showTable11,g_tcpOrwifiFlag);
-//        sendcmdH(wifih_showTable12,g_tcpOrwifiFlag); 
+        sendcmdH(wifih_showTable12,g_tcpOrwifiFlag); 
         sendcmdH(wifih_showTable13,g_tcpOrwifiFlag);
         sendcmdH(wifih_showTable14,g_tcpOrwifiFlag); 
         sendcmdH(wifih_showTable15,g_tcpOrwifiFlag);
+        sendcmdH(wifih_showTable16,g_tcpOrwifiFlag); 
         
     }
     else if(0XC2==i)
@@ -1407,6 +1459,11 @@ void g_showCmdH(uint8_t i,uint8_t g_tcpOrwifiFlag)
         sendcmdH((const uint8_t*)table,g_tcpOrwifiFlag);            
         sprintf(table,"wifi apgw=%d.%d.%d.%d",g_wifi_ap_gw_temp[0],g_wifi_ap_gw_temp[1],g_wifi_ap_gw_temp[2],g_wifi_ap_gw_temp[3]);
         sendcmdH((const uint8_t*)table,g_tcpOrwifiFlag);
+        
+        //------------------------------------------------------
+        //wifi STA 经过网络DHCP 分配的IP
+        sprintf(table,"wifi staDHCP_IP=%d.%d.%d.%d",g_wifi_sta_dhcpIp_temp[0],g_wifi_sta_dhcpIp_temp[1],g_wifi_sta_dhcpIp_temp[2],g_wifi_sta_dhcpIp_temp[3]);
+        sendcmdH((const uint8_t*)table,g_tcpOrwifiFlag);   
 
         //------------------------------------------------------
         //wifi STA连接网络参数
