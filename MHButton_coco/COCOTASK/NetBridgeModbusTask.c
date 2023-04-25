@@ -1460,6 +1460,17 @@ void g_showCmdH(uint8_t i,uint8_t g_tcpOrwifiFlag)
         sprintf(table,"wifi apgw=%d.%d.%d.%d",g_wifi_ap_gw_temp[0],g_wifi_ap_gw_temp[1],g_wifi_ap_gw_temp[2],g_wifi_ap_gw_temp[3]);
         sendcmdH((const uint8_t*)table,g_tcpOrwifiFlag);
         
+        if(1==g_dhcpip_staticip_flag)
+        {
+            sprintf(table,"NOTICE:wifi STA IP MODEL=[DHCP]");
+            sendcmdH((const uint8_t*)table,g_tcpOrwifiFlag);  
+        }
+        else
+        {
+            sprintf(table,"NOTICE:wifi STA IP MODEL=[STATIC]");
+            sendcmdH((const uint8_t*)table,g_tcpOrwifiFlag);  
+        }
+        
         //------------------------------------------------------
         //wifi STA 经过网络DHCP 分配的IP
         sprintf(table,"wifi staDHCP_IP=%d.%d.%d.%d",g_wifi_sta_dhcpIp_temp[0],g_wifi_sta_dhcpIp_temp[1],g_wifi_sta_dhcpIp_temp[2],g_wifi_sta_dhcpIp_temp[3]);

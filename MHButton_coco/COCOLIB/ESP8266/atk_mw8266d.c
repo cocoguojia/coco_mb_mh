@@ -74,6 +74,7 @@ uint8_t g_atk_AT_MW8266_InitSub(void)
     uint8_t ret=0;
     AT_MW8266_strcut_init();            //wifi模块 AT命令结构体初始化赋值
     atinit_point:
+    ret=0;
     for(n=0;g_at_cipstart_n>=n;n++)     //我们这里用一个全局变量表示 AT初始化最后一步的序号值
     {
         if(0==ret)
@@ -589,7 +590,7 @@ void AT_MW8266_strcut_init(void)
         //发送 设置sta DHCP 指令
         AT_MW8266_strcut[i].ack="OK";
         AT_MW8266_strcut[i].timeout=2000;
-        AT_MW8266_strcut[i].afterDelayMs=200;
+        AT_MW8266_strcut[i].afterDelayMs=1000;
         sprintf(cmdTable_CWDHCP,"AT+CWDHCP=1,1"); 
         AT_MW8266_strcut[i].cmd=cmdTable_CWDHCP; 
         i++;

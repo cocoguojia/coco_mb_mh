@@ -27,7 +27,18 @@ Project File Date:  04/20/2023
 <h2>Output:</h2>
 *** Using Compiler 'V5.06 update 7 (build 960)', folder: 'C:\MDK535\ARM\ARMCC\Bin'
 Build target '001'
-"001\001.axf" - 0 Error(s), 0 Warning(s).
+compiling NetBridgeModbusTask.c...
+..\COCOTASK\NetBridgeModbusTask.c(1114): warning:  #1293-D: assignment in condition
+        while(cmdTemp1=strtok(NULL,(const char*)" .,"))
+..\COCOTASK\NetBridgeModbusTask.c(1207): warning:  #1293-D: assignment in condition
+        while(cmdTemp1=strtok(NULL,(const char*)" ,."))
+..\COCOTASK\NetBridgeModbusTask.c(1330): warning:  #1293-D: assignment in condition
+        while(cmdTemp1=strtok(NULL,(const char*)" "))
+..\COCOTASK\NetBridgeModbusTask.c: 3 warnings, 0 errors
+linking...
+Program Size: Code=44164 RO-data=4016 RW-data=660 ZI-data=27004  
+FromELF: creating hex file...
+"001\001.axf" - 0 Error(s), 3 Warning(s).
 
 <h2>Software Packages used:</h2>
 
@@ -51,7 +62,7 @@ Package Vendor: Keil
 
    * Component: ARM::CMSIS:CORE:5.5.0
       Include file:  CMSIS\Core\Include\tz_context.h
-Build Time Elapsed:  00:00:01
+Build Time Elapsed:  00:00:03
 </pre>
 </body>
 </html>
