@@ -35,6 +35,7 @@ extern USHORT   usTCPBufLen;                       //modbus½ÓÊÕ»º³åÇø³¤¶È (³õ²½½
 //------------------------------------------------------------------------------------------------------------------------------------------------------------
 //ÇÅ½ÓÊµÑéÊý¾Ý±¸·Ý
 //¶Á±£³Ö¼Ä´æÆ÷´ÓÄÚµØÖ·1Ö®ºóµÄ13¸ö×Ö½Ú
+//00 00 00 00 00 06 00 03 00 00 00 0D µØÖ·´Ó0¿ªÊ¼¾ÍµÃÕâ¸öÃüÁî
 //00 00 00 00 00 06 00 03 00 01 00 0D---00 00 00 00 00 1D 00 03 1A 00 01 00 00 00 01 00 01 00 01 00 00 00 00 00 00 00 9F 00 34 00 AC 00 96 00 92 
 //00 00 00 00 00 06 00 TCP±¨ÎÄÍ· 
 //Ç°Á½¸ö×Ö½Ú ÊÂÎñÔª±êÊ¶·ûÒ»°ãÃ¿·¢ËÍÒ»´Î¾Í++ ·ÀÖ¹ÖØ¸´ 
@@ -354,10 +355,12 @@ uint8_t g_analysisUserCmdSub(uint16_t lenN,uint8_t msgN,uint8_t TcpOrWifi)
 void cmd_wdt(uint8_t n,uint8_t TcpOrWifi)
 {
     uint16_t w5500Msg;
+    uint16_t wifiMsg;
     switch(n)
     {
         case 0:             //²é¿´ÃüÁî wdt h
         w5500Msg=0xA1;
+        wifiMsg=0XA1;
         App_Printf("$$cmd=wdt h\r\n");
         if(1==TcpOrWifi)
         {
@@ -365,13 +368,25 @@ void cmd_wdt(uint8_t n,uint8_t TcpOrWifi)
         }
         else
         {
-             osMessageQueuePut(wifiSendQueueHandle,&w5500Msg, 0U, 100U);
+             osMessageQueuePut(wifiSendQueueHandle,&wifiMsg, 0U, 100U);
         }
         break;
         
         case 1:             //²é¿´ÃüÁî wdt en 0  ¹Ø¹· ÆäÊµ¾ÍÊÇÒªÇó¸´Î»
         App_Printf("$$cmd=wdt en 0\r\n");
         osDelay(100);
+        w5500Msg=0xA2;
+        wifiMsg=0XA2;
+        App_Printf("$$Device reset. Network disconnection immediately\r\n");
+        if(1==TcpOrWifi)
+        {
+             osMessageQueuePut(w5500SendQueueHandle,&w5500Msg, 0U, 100U);
+        }
+        else
+        {
+             osMessageQueuePut(wifiSendQueueHandle,&wifiMsg, 0U, 100U);
+        }
+        osDelay(1000);       
         //---------------------------------------------------------------
         //¸´Î»
         taskENTER_CRITICAL();
@@ -514,11 +529,11 @@ void cmd_w5500(uint8_t n,uint8_t TcpOrWifi)
         //##############################################################################################    
         osDelay(100); 
         //---------------------------------------------------------------
-        //¸´Î»
-        taskENTER_CRITICAL();
-        HAL_NVIC_SystemReset();
-        taskEXIT_CRITICAL();
-        osDelay(500);        
+        ////¸´Î»
+        //taskENTER_CRITICAL();
+        //HAL_NVIC_SystemReset();
+        //taskEXIT_CRITICAL();
+        //osDelay(500);        
         break;
            
         case 7:           //no
@@ -534,11 +549,11 @@ void cmd_w5500(uint8_t n,uint8_t TcpOrWifi)
         //##############################################################################################    
         osDelay(100); 
         //---------------------------------------------------------------
-        //¸´Î»
-        taskENTER_CRITICAL();
-        HAL_NVIC_SystemReset();
-        taskEXIT_CRITICAL();
-        osDelay(500);        
+        ////¸´Î»
+        //taskENTER_CRITICAL();
+        //HAL_NVIC_SystemReset();
+        //taskEXIT_CRITICAL();
+        //osDelay(500);        
         break;
          
         
@@ -555,7 +570,7 @@ void cmd_wifi(uint8_t n,uint8_t TcpOrWifi)
     uint16_t w5500Msg;
     char table[90];
     uint8_t i=0;
-     uint8_t len=0;
+    uint8_t len=0;
     uint8_t save_Buffer[30];//22
     switch(n)
     {
@@ -573,7 +588,7 @@ void cmd_wifi(uint8_t n,uint8_t TcpOrWifi)
         }
         break;
         
-        case 1: // ap ssid
+        case 1: //ap ssid
         if(0==strDoSubxxx(comRet,3,(uint8_t*)g_wifi_ap_sidd_temp,8,0,0))
         {
             App_Printf("set wifi ap id=%s\r\n",&g_wifi_ap_sidd_temp[0]);
@@ -902,11 +917,11 @@ void cmd_wifi(uint8_t n,uint8_t TcpOrWifi)
         //##############################################################################################    
         osDelay(100); 
         //---------------------------------------------------------------
-        //¸´Î»
-        taskENTER_CRITICAL();
-        HAL_NVIC_SystemReset();
-        taskEXIT_CRITICAL();
-        osDelay(500);        
+        ////¸´Î»
+        //taskENTER_CRITICAL();
+        //HAL_NVIC_SystemReset();
+        //taskEXIT_CRITICAL();
+        //osDelay(500);        
         break;
            
         case 15://no
@@ -922,11 +937,11 @@ void cmd_wifi(uint8_t n,uint8_t TcpOrWifi)
         //##############################################################################################    
         osDelay(100); 
         //---------------------------------------------------------------
-        //¸´Î»
-        taskENTER_CRITICAL();
-        HAL_NVIC_SystemReset();
-        taskEXIT_CRITICAL();
-        osDelay(500);        
+        ////¸´Î»
+        //taskENTER_CRITICAL();
+        //HAL_NVIC_SystemReset();
+        //taskEXIT_CRITICAL();
+        //osDelay(500);        
         break;
         
         case 16://dhcp en
@@ -1402,6 +1417,10 @@ void g_showCmdH(uint8_t i,uint8_t g_tcpOrwifiFlag)
         sendcmdH(wdth_showTable0,g_tcpOrwifiFlag);
         sendcmdH(wdth_showTable1,g_tcpOrwifiFlag);
         sendcmdH(wdth_showTable2,g_tcpOrwifiFlag);
+    }
+    if(0XA2==i)
+    {
+        sendcmdH(wdth_showTable3,g_tcpOrwifiFlag);
     }
     else if(0XB1==i)
     {

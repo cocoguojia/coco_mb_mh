@@ -123,52 +123,59 @@ uint8_t g_atk_mw8266d_getApStaIp(void)
 uint8_t g_atk_mw8266d_monitor(void)
 {
     static uint8_t n=0;
-    static uint8_t LastStatus=1;        //1=读状态正常  0=状态不正常
-    static uint8_t LastclinkServer=1;   //1=连接服务器正常  0=连接服务器不正常    
+//    static uint8_t LastStatus=1;        //1=读状态正常  0=状态不正常
+//    static uint8_t LastclinkServer=1;   //1=连接服务器正常  0=连接服务器不正常    
     uint8_t returnN=0;
     n++;
     
-    if(20<=n)//20
+    if(50<=n)//50  5秒一检测
     { 
-       
-        if(ATK_MW8266D_EOK!=atk_mw8266dSendAtCmdStatus(&AT_MW8266_strcut[AT_CIPSTATUS_N]))
-        {            
+        if(0==g_wifi_receive_data_num)
+        {
+            if(ATK_MW8266D_EOK!=atk_mw8266dSendAtCmdStatus(&AT_MW8266_strcut[AT_CIPSTATUS_N]))
+            {            
 
-            if(1==LastStatus)
-            {
-                App_Printf("$$STATUS is Err\r\n");
-                LastStatus=0;
-                LastclinkServer=0;
+//                if(1==LastStatus)
+                {
+                    App_Printf("$$STATUS is Err\r\n");
+//                    LastStatus=0;
+//                    LastclinkServer=0;
+                }
+                
+                 if(ATK_MW8266D_EOK==atk_mw8266dSendAtCmd(&AT_MW8266_strcut[g_at_cipstart_n]))  //连接TCP服务器
+                 {
+//                     if(0==LastclinkServer)
+                     {
+                        App_Printf("$$clink SERVER CMD is OK\r\n");
+//                        LastclinkServer=1;
+                     }
+                 }
+                 else
+                 {
+//                     if(1==LastclinkServer)
+                     {
+                        App_Printf("$$clink SERVER CMD is Err\r\n");
+//                        LastclinkServer=0;
+                     }
+                 }
+                 
             }
-            
-             if(ATK_MW8266D_EOK==atk_mw8266dSendAtCmd(&AT_MW8266_strcut[g_at_cipstart_n]))  //连接TCP服务器
-             {
-                 if(0==LastclinkServer)
-                 {
-                    App_Printf("$$clink SERVER CMD is OK\r\n");
-                    LastclinkServer=1;
-                 }
-             }
-             else
-             {
-                 if(1==LastclinkServer)
-                 {
-                    App_Printf("$$clink SERVER CMD is Err\r\n");
-                    LastclinkServer=0;
-                 }
-             }
-             
+            else
+            {
+//                if(0==LastStatus)
+                {
+                    App_Printf("$$STATUS is nice\r\n");
+//                    LastStatus=1;
+                }
+//                LastclinkServer=1;
+                CMDret =CMDretFirst;
+                returnN=atk_mw8266d_monitor_second();
+            }
         }
         else
         {
-            if(0==LastStatus)
-            {
-                App_Printf("$$STATUS is nice\r\n");
-                LastStatus=1;
-            }
-            LastclinkServer=1;
-            CMDret =CMDretFirst;
-            returnN=atk_mw8266d_monitor_second();
+            App_Printf("$$STATUS is nice,receive data in 5s\r\n");
+            g_wifi_receive_data_num=0;
         }
         n=0;       
         
@@ -253,7 +260,8 @@ uint8_t atk_mw8266d_monitor_second(void)
                 //检测是否有重大错误 有则需要重新初始化wifi模块
                 //"CONNECT FAIL"
                 //"Link type Error"
-                App_Printf("$$\r\n###WIFI Gross Mistake=%d###\r\n",n);//乱码
+                g_wifi_receive_data_num++;
+                App_Printf("$$\r\n###WIFI Gross Mistake=%d###\r\n",n);
                 return 1;
             }
         }  
@@ -261,6 +269,7 @@ uint8_t atk_mw8266d_monitor_second(void)
         ret=strstr((const char *)CMDret,"+IPD,");
         if(NULL!=ret)
         {
+            g_wifi_receive_data_num++;
             ret+=5;            
             ret1=strstr((const char *)ret,",");
             ret1++;

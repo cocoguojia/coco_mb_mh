@@ -75,7 +75,7 @@ void W5500SendTask(void *argument)
                     ;
                 }   
             }
-            else if((0XA1==msg)||(0XB1==msg)||(0XB2==msg)||(0XC1==msg)||(0XC2==msg)||(0XD1==msg)||(0XD2==msg))
+            else if((0XA1==msg)||(0XA2==msg)||(0XB1==msg)||(0XB2==msg)||(0XC1==msg)||(0XC2==msg)||(0XD1==msg)||(0XD2==msg))
             {
                 g_showCmdH(msg,1);
             }

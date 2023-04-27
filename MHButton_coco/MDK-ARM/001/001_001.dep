@@ -1,8 +1,8 @@
 Dependencies for Project '001', Target '001': (DO NOT MODIFY !)
 CompilerVersion: 5060960::V5.06 update 7 (build 960)::.\ARMCC
 F (..\COCOInclude\myinclude.h)(0x6437A006)()
-F (..\COCOInclude\globalVariable.c)(0x644641CE)(--c99 -c --cpu Cortex-M0 -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F0xx_HAL_Driver/Inc -I ../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM0 -I ../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I ../Drivers/CMSIS/Include -I ../COCOLIB/ESP8266 -I ../COCOInclude -I ../COCOTASK -I ../COCOLIB/W5500_TCPC -I ../FreeModbus/modbus/ascii -I ../FreeModbus/modbus/functions -I ../FreeModbus/modbus/include -I ../FreeModbus/modbus/tcp -I ../FreeModbus/modbus/rtu -I ../FreeModbus/port_fm -I ../COCOLIB/W25Q64 -I ../COCOLIB/BL8025-I.\RTE\_001-IC:\Users\Administrator\AppData\Local\Arm\Packs\ARM\CMSIS\5.8.0\CMSIS\Core\Include-IC:\Users\Administrator\AppData\Local\Arm\Packs\Keil\STM32F0xx_DFP\2.1.0\Drivers\CMSIS\Device\ST\STM32F0xx\Include-D__UVISION_VERSION="535" -D_RTE_ -DSTM32F030xC -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F030xC-o 001\globalvariable.o --omf_browse 001\globalvariable.crf --depend 001\globalvariable.d)
-I (..\COCOInclude\globalVariable.h)(0x6446416B)
+F (..\COCOInclude\globalVariable.c)(0x6449CB1B)(--c99 -c --cpu Cortex-M0 -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F0xx_HAL_Driver/Inc -I ../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM0 -I ../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I ../Drivers/CMSIS/Include -I ../COCOLIB/ESP8266 -I ../COCOInclude -I ../COCOTASK -I ../COCOLIB/W5500_TCPC -I ../FreeModbus/modbus/ascii -I ../FreeModbus/modbus/functions -I ../FreeModbus/modbus/include -I ../FreeModbus/modbus/tcp -I ../FreeModbus/modbus/rtu -I ../FreeModbus/port_fm -I ../COCOLIB/W25Q64 -I ../COCOLIB/BL8025-I.\RTE\_001-IC:\Users\Administrator\AppData\Local\Arm\Packs\ARM\CMSIS\5.8.0\CMSIS\Core\Include-IC:\Users\Administrator\AppData\Local\Arm\Packs\Keil\STM32F0xx_DFP\2.1.0\Drivers\CMSIS\Device\ST\STM32F0xx\Include-D__UVISION_VERSION="535" -D_RTE_ -DSTM32F030xC -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F030xC-o 001\globalvariable.o --omf_browse 001\globalvariable.crf --depend 001\globalvariable.d)
+I (..\COCOInclude\globalVariable.h)(0x6449CB70)
 I (..\COCOInclude\myinclude.h)(0x6437A006)
 I (C:\MDK535\ARM\ARMCC\include\stdio.h)(0x60252374)
 I (C:\MDK535\ARM\ARMCC\include\string.h)(0x6025237E)
@@ -75,7 +75,7 @@ I (../FreeModbus/port_fm/port_fm.h)(0x643F8957)
 I (C:\MDK535\ARM\ARMCC\include\assert.h)(0x60252378)
 I (C:\MDK535\ARM\ARMCC\include\inttypes.h)(0x6025237E)
 I (../COCOLIB/BL8025/BL8025.h)(0x642E86F7)
-F (..\COCOInclude\globalVariable.h)(0x6446416B)()
+F (..\COCOInclude\globalVariable.h)(0x6449CB70)()
 F (startup_stm32f030xc.s)(0x6437BD49)(--cpu Cortex-M0 -g --apcs=interwork --pd "__MICROLIB SETA 1" -I ..\Core\Inc-I.\RTE\_001-IC:\Users\Administrator\AppData\Local\Arm\Packs\ARM\CMSIS\5.8.0\CMSIS\Core\Include-IC:\Users\Administrator\AppData\Local\Arm\Packs\Keil\STM32F0xx_DFP\2.1.0\Drivers\CMSIS\Device\ST\STM32F0xx\Include--pd "__UVISION_VERSION SETA 535" --pd "_RTE_ SETA 1" --pd "STM32F030xC SETA 1" --pd "_RTE_ SETA 1"--list startup_stm32f030xc.lst --xref -o 001\startup_stm32f030xc.o --depend 001\startup_stm32f030xc.d)
 F (../Core/Src/main.c)(0x642E621C)(--c99 -c --cpu Cortex-M0 -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F0xx_HAL_Driver/Inc -I ../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM0 -I ../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I ../Drivers/CMSIS/Include -I ../COCOLIB/ESP8266 -I ../COCOInclude -I ../COCOTASK -I ../COCOLIB/W5500_TCPC -I ../FreeModbus/modbus/ascii -I ../FreeModbus/modbus/functions -I ../FreeModbus/modbus/include -I ../FreeModbus/modbus/tcp -I ../FreeModbus/modbus/rtu -I ../FreeModbus/port_fm -I ../COCOLIB/W25Q64 -I ../COCOLIB/BL8025-I.\RTE\_001-IC:\Users\Administrator\AppData\Local\Arm\Packs\ARM\CMSIS\5.8.0\CMSIS\Core\Include-IC:\Users\Administrator\AppData\Local\Arm\Packs\Keil\STM32F0xx_DFP\2.1.0\Drivers\CMSIS\Device\ST\STM32F0xx\Include-D__UVISION_VERSION="535" -D_RTE_ -DSTM32F030xC -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F030xC-o 001\main.o --omf_browse 001\main.crf --depend 001\main.d)
 I (../Core/Inc/main.h)(0x6433A01E)
@@ -135,7 +135,7 @@ I (../Middlewares/Third_Party/FreeRTOS/Source/include/task.h)(0x641D5202)
 I (../Middlewares/Third_Party/FreeRTOS/Source/include/list.h)(0x641D5202)
 I (../COCOLIB/ESP8266/atk_mw8266d.h)(0x642FC159)
 I (../COCOLIB/ESP8266/atk_mw8266d_uart.h)(0x6434F5C7)
-I (../COCOInclude/globalVariable.h)(0x6446416B)
+I (../COCOInclude/globalVariable.h)(0x6449CB70)
 I (../COCOTASK/COCO_StartOsTaskSub.h)(0x643F53C2)
 I (../COCOTASK/KeyTask.h)(0x6421565D)
 I (../COCOTASK/KeyTimerTask.h)(0x64215ECE)
@@ -188,7 +188,7 @@ I (../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_tim.h)(0x641D521B)
 I (../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_tim_ex.h)(0x641D521B)
 I (../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_uart.h)(0x641D521B)
 I (../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_uart_ex.h)(0x641D521B)
-F (../Core/Src/freertos.c)(0x644640C3)(--c99 -c --cpu Cortex-M0 -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F0xx_HAL_Driver/Inc -I ../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM0 -I ../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I ../Drivers/CMSIS/Include -I ../COCOLIB/ESP8266 -I ../COCOInclude -I ../COCOTASK -I ../COCOLIB/W5500_TCPC -I ../FreeModbus/modbus/ascii -I ../FreeModbus/modbus/functions -I ../FreeModbus/modbus/include -I ../FreeModbus/modbus/tcp -I ../FreeModbus/modbus/rtu -I ../FreeModbus/port_fm -I ../COCOLIB/W25Q64 -I ../COCOLIB/BL8025-I.\RTE\_001-IC:\Users\Administrator\AppData\Local\Arm\Packs\ARM\CMSIS\5.8.0\CMSIS\Core\Include-IC:\Users\Administrator\AppData\Local\Arm\Packs\Keil\STM32F0xx_DFP\2.1.0\Drivers\CMSIS\Device\ST\STM32F0xx\Include-D__UVISION_VERSION="535" -D_RTE_ -DSTM32F030xC -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F030xC-o 001\freertos.o --omf_browse 001\freertos.crf --depend 001\freertos.d)
+F (../Core/Src/freertos.c)(0x64488F8B)(--c99 -c --cpu Cortex-M0 -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F0xx_HAL_Driver/Inc -I ../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM0 -I ../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I ../Drivers/CMSIS/Include -I ../COCOLIB/ESP8266 -I ../COCOInclude -I ../COCOTASK -I ../COCOLIB/W5500_TCPC -I ../FreeModbus/modbus/ascii -I ../FreeModbus/modbus/functions -I ../FreeModbus/modbus/include -I ../FreeModbus/modbus/tcp -I ../FreeModbus/modbus/rtu -I ../FreeModbus/port_fm -I ../COCOLIB/W25Q64 -I ../COCOLIB/BL8025-I.\RTE\_001-IC:\Users\Administrator\AppData\Local\Arm\Packs\ARM\CMSIS\5.8.0\CMSIS\Core\Include-IC:\Users\Administrator\AppData\Local\Arm\Packs\Keil\STM32F0xx_DFP\2.1.0\Drivers\CMSIS\Device\ST\STM32F0xx\Include-D__UVISION_VERSION="535" -D_RTE_ -DSTM32F030xC -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F030xC-o 001\freertos.o --omf_browse 001\freertos.crf --depend 001\freertos.d)
 I (../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h)(0x641D5202)
 I (C:\MDK535\ARM\ARMCC\include\stddef.h)(0x6025237E)
 I (C:\MDK535\ARM\ARMCC\include\stdint.h)(0x6025237E)
@@ -243,7 +243,7 @@ I (../Core/Inc/usart.h)(0x643778FF)
 I (../Core/Inc/gpio.h)(0x641D523A)
 I (../COCOLIB/ESP8266/atk_mw8266d.h)(0x642FC159)
 I (../COCOLIB/ESP8266/atk_mw8266d_uart.h)(0x6434F5C7)
-I (../COCOInclude/globalVariable.h)(0x6446416B)
+I (../COCOInclude/globalVariable.h)(0x6449CB70)
 I (../COCOTASK/COCO_StartOsTaskSub.h)(0x643F53C2)
 I (../COCOTASK/KeyTask.h)(0x6421565D)
 I (../COCOTASK/KeyTimerTask.h)(0x64215ECE)
@@ -555,7 +555,7 @@ I (../Core/Inc/usart.h)(0x643778FF)
 I (../Core/Inc/gpio.h)(0x641D523A)
 I (../COCOLIB/ESP8266/atk_mw8266d.h)(0x642FC159)
 I (../COCOLIB/ESP8266/atk_mw8266d_uart.h)(0x6434F5C7)
-I (../COCOInclude/globalVariable.h)(0x6446416B)
+I (../COCOInclude/globalVariable.h)(0x6449CB70)
 I (../COCOTASK/COCO_StartOsTaskSub.h)(0x643F53C2)
 I (../COCOTASK/KeyTask.h)(0x6421565D)
 I (../COCOTASK/KeyTimerTask.h)(0x64215ECE)
@@ -629,7 +629,7 @@ I (../Core/Inc/usart.h)(0x643778FF)
 I (../Core/Inc/gpio.h)(0x641D523A)
 I (../COCOLIB/ESP8266/atk_mw8266d.h)(0x642FC159)
 I (../COCOLIB/ESP8266/atk_mw8266d_uart.h)(0x6434F5C7)
-I (../COCOInclude/globalVariable.h)(0x6446416B)
+I (../COCOInclude/globalVariable.h)(0x6449CB70)
 I (../COCOTASK/COCO_StartOsTaskSub.h)(0x643F53C2)
 I (../COCOTASK/KeyTask.h)(0x6421565D)
 I (../COCOTASK/KeyTimerTask.h)(0x64215ECE)
@@ -703,7 +703,7 @@ I (../Core/Inc/usart.h)(0x643778FF)
 I (../Core/Inc/gpio.h)(0x641D523A)
 I (../COCOLIB/ESP8266/atk_mw8266d.h)(0x642FC159)
 I (../COCOLIB/ESP8266/atk_mw8266d_uart.h)(0x6434F5C7)
-I (../COCOInclude/globalVariable.h)(0x6446416B)
+I (../COCOInclude/globalVariable.h)(0x6449CB70)
 I (../COCOTASK/COCO_StartOsTaskSub.h)(0x643F53C2)
 I (../COCOTASK/KeyTask.h)(0x6421565D)
 I (../COCOTASK/KeyTimerTask.h)(0x64215ECE)
@@ -777,7 +777,7 @@ I (../Core/Inc/usart.h)(0x643778FF)
 I (../Core/Inc/gpio.h)(0x641D523A)
 I (../COCOLIB/ESP8266/atk_mw8266d.h)(0x642FC159)
 I (../COCOLIB/ESP8266/atk_mw8266d_uart.h)(0x6434F5C7)
-I (../COCOInclude/globalVariable.h)(0x6446416B)
+I (../COCOInclude/globalVariable.h)(0x6449CB70)
 I (../COCOTASK/COCO_StartOsTaskSub.h)(0x643F53C2)
 I (../COCOTASK/KeyTask.h)(0x6421565D)
 I (../COCOTASK/KeyTimerTask.h)(0x64215ECE)
@@ -795,7 +795,7 @@ I (../FreeModbus/port_fm/port_fm.h)(0x643F8957)
 I (C:\MDK535\ARM\ARMCC\include\assert.h)(0x60252378)
 I (C:\MDK535\ARM\ARMCC\include\inttypes.h)(0x6025237E)
 F (..\COCOTASK\KeyTimerTask.h)(0x64215ECE)()
-F (..\COCOTASK\NetBridgeModbusTask.c)(0x64472726)(--c99 -c --cpu Cortex-M0 -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F0xx_HAL_Driver/Inc -I ../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM0 -I ../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I ../Drivers/CMSIS/Include -I ../COCOLIB/ESP8266 -I ../COCOInclude -I ../COCOTASK -I ../COCOLIB/W5500_TCPC -I ../FreeModbus/modbus/ascii -I ../FreeModbus/modbus/functions -I ../FreeModbus/modbus/include -I ../FreeModbus/modbus/tcp -I ../FreeModbus/modbus/rtu -I ../FreeModbus/port_fm -I ../COCOLIB/W25Q64 -I ../COCOLIB/BL8025-I.\RTE\_001-IC:\Users\Administrator\AppData\Local\Arm\Packs\ARM\CMSIS\5.8.0\CMSIS\Core\Include-IC:\Users\Administrator\AppData\Local\Arm\Packs\Keil\STM32F0xx_DFP\2.1.0\Drivers\CMSIS\Device\ST\STM32F0xx\Include-D__UVISION_VERSION="535" -D_RTE_ -DSTM32F030xC -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F030xC-o 001\netbridgemodbustask.o --omf_browse 001\netbridgemodbustask.crf --depend 001\netbridgemodbustask.d)
+F (..\COCOTASK\NetBridgeModbusTask.c)(0x6449CE29)(--c99 -c --cpu Cortex-M0 -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F0xx_HAL_Driver/Inc -I ../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM0 -I ../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I ../Drivers/CMSIS/Include -I ../COCOLIB/ESP8266 -I ../COCOInclude -I ../COCOTASK -I ../COCOLIB/W5500_TCPC -I ../FreeModbus/modbus/ascii -I ../FreeModbus/modbus/functions -I ../FreeModbus/modbus/include -I ../FreeModbus/modbus/tcp -I ../FreeModbus/modbus/rtu -I ../FreeModbus/port_fm -I ../COCOLIB/W25Q64 -I ../COCOLIB/BL8025-I.\RTE\_001-IC:\Users\Administrator\AppData\Local\Arm\Packs\ARM\CMSIS\5.8.0\CMSIS\Core\Include-IC:\Users\Administrator\AppData\Local\Arm\Packs\Keil\STM32F0xx_DFP\2.1.0\Drivers\CMSIS\Device\ST\STM32F0xx\Include-D__UVISION_VERSION="535" -D_RTE_ -DSTM32F030xC -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F030xC-o 001\netbridgemodbustask.o --omf_browse 001\netbridgemodbustask.crf --depend 001\netbridgemodbustask.d)
 I (..\COCOTASK\NetBridgeModbusTask.h)(0x64463610)
 I (../COCOInclude/myinclude.h)(0x6437A006)
 I (C:\MDK535\ARM\ARMCC\include\stdio.h)(0x60252374)
@@ -851,7 +851,7 @@ I (../Core/Inc/usart.h)(0x643778FF)
 I (../Core/Inc/gpio.h)(0x641D523A)
 I (../COCOLIB/ESP8266/atk_mw8266d.h)(0x642FC159)
 I (../COCOLIB/ESP8266/atk_mw8266d_uart.h)(0x6434F5C7)
-I (../COCOInclude/globalVariable.h)(0x6446416B)
+I (../COCOInclude/globalVariable.h)(0x6449CB70)
 I (../COCOTASK/COCO_StartOsTaskSub.h)(0x643F53C2)
 I (../COCOTASK/KeyTask.h)(0x6421565D)
 I (../COCOTASK/KeyTimerTask.h)(0x64215ECE)
@@ -931,7 +931,7 @@ I (../Core/Inc/usart.h)(0x643778FF)
 I (../Core/Inc/gpio.h)(0x641D523A)
 I (../COCOLIB/ESP8266/atk_mw8266d.h)(0x642FC159)
 I (../COCOLIB/ESP8266/atk_mw8266d_uart.h)(0x6434F5C7)
-I (../COCOInclude/globalVariable.h)(0x6446416B)
+I (../COCOInclude/globalVariable.h)(0x6449CB70)
 I (../COCOTASK/COCO_StartOsTaskSub.h)(0x643F53C2)
 I (../COCOTASK/KeyTask.h)(0x6421565D)
 I (../COCOTASK/KeyTimerTask.h)(0x64215ECE)
@@ -1006,7 +1006,7 @@ I (../Core/Inc/usart.h)(0x643778FF)
 I (../Core/Inc/gpio.h)(0x641D523A)
 I (../COCOLIB/ESP8266/atk_mw8266d.h)(0x642FC159)
 I (../COCOLIB/ESP8266/atk_mw8266d_uart.h)(0x6434F5C7)
-I (../COCOInclude/globalVariable.h)(0x6446416B)
+I (../COCOInclude/globalVariable.h)(0x6449CB70)
 I (../COCOTASK/COCO_StartOsTaskSub.h)(0x643F53C2)
 I (../COCOTASK/KeyTask.h)(0x6421565D)
 I (../COCOTASK/KeyTimerTask.h)(0x64215ECE)
@@ -1030,7 +1030,7 @@ I (../COCOLIB/W5500_TCPC/socket.h)(0x643F5814)
 I (../COCOLIB/W5500_TCPC/utility.h)(0x64229608)
 I (../COCOLIB/W5500_TCPC/tcp_dowithSub.h)(0x643F5B77)
 F (..\COCOTASK\W5500Task.h)(0x6424E325)()
-F (..\COCOTASK\WifiSendTask.c)(0x6444E354)(--c99 -c --cpu Cortex-M0 -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F0xx_HAL_Driver/Inc -I ../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM0 -I ../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I ../Drivers/CMSIS/Include -I ../COCOLIB/ESP8266 -I ../COCOInclude -I ../COCOTASK -I ../COCOLIB/W5500_TCPC -I ../FreeModbus/modbus/ascii -I ../FreeModbus/modbus/functions -I ../FreeModbus/modbus/include -I ../FreeModbus/modbus/tcp -I ../FreeModbus/modbus/rtu -I ../FreeModbus/port_fm -I ../COCOLIB/W25Q64 -I ../COCOLIB/BL8025-I.\RTE\_001-IC:\Users\Administrator\AppData\Local\Arm\Packs\ARM\CMSIS\5.8.0\CMSIS\Core\Include-IC:\Users\Administrator\AppData\Local\Arm\Packs\Keil\STM32F0xx_DFP\2.1.0\Drivers\CMSIS\Device\ST\STM32F0xx\Include-D__UVISION_VERSION="535" -D_RTE_ -DSTM32F030xC -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F030xC-o 001\wifisendtask.o --omf_browse 001\wifisendtask.crf --depend 001\wifisendtask.d)
+F (..\COCOTASK\WifiSendTask.c)(0x6449CB70)(--c99 -c --cpu Cortex-M0 -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F0xx_HAL_Driver/Inc -I ../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM0 -I ../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I ../Drivers/CMSIS/Include -I ../COCOLIB/ESP8266 -I ../COCOInclude -I ../COCOTASK -I ../COCOLIB/W5500_TCPC -I ../FreeModbus/modbus/ascii -I ../FreeModbus/modbus/functions -I ../FreeModbus/modbus/include -I ../FreeModbus/modbus/tcp -I ../FreeModbus/modbus/rtu -I ../FreeModbus/port_fm -I ../COCOLIB/W25Q64 -I ../COCOLIB/BL8025-I.\RTE\_001-IC:\Users\Administrator\AppData\Local\Arm\Packs\ARM\CMSIS\5.8.0\CMSIS\Core\Include-IC:\Users\Administrator\AppData\Local\Arm\Packs\Keil\STM32F0xx_DFP\2.1.0\Drivers\CMSIS\Device\ST\STM32F0xx\Include-D__UVISION_VERSION="535" -D_RTE_ -DSTM32F030xC -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F030xC-o 001\wifisendtask.o --omf_browse 001\wifisendtask.crf --depend 001\wifisendtask.d)
 I (..\COCOTASK\WifiSendTask.h)(0x643359BF)
 I (../COCOInclude/myinclude.h)(0x6437A006)
 I (C:\MDK535\ARM\ARMCC\include\stdio.h)(0x60252374)
@@ -1086,7 +1086,7 @@ I (../Core/Inc/usart.h)(0x643778FF)
 I (../Core/Inc/gpio.h)(0x641D523A)
 I (../COCOLIB/ESP8266/atk_mw8266d.h)(0x642FC159)
 I (../COCOLIB/ESP8266/atk_mw8266d_uart.h)(0x6434F5C7)
-I (../COCOInclude/globalVariable.h)(0x6446416B)
+I (../COCOInclude/globalVariable.h)(0x6449CB70)
 I (../COCOTASK/COCO_StartOsTaskSub.h)(0x643F53C2)
 I (../COCOTASK/KeyTask.h)(0x6421565D)
 I (../COCOTASK/KeyTimerTask.h)(0x64215ECE)
@@ -1104,7 +1104,7 @@ I (../FreeModbus/port_fm/port_fm.h)(0x643F8957)
 I (C:\MDK535\ARM\ARMCC\include\assert.h)(0x60252378)
 I (C:\MDK535\ARM\ARMCC\include\inttypes.h)(0x6025237E)
 F (..\COCOTASK\WifiSendTask.h)(0x643359BF)()
-F (..\COCOTASK\W5500SendTask.c)(0x643F5C0F)(--c99 -c --cpu Cortex-M0 -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F0xx_HAL_Driver/Inc -I ../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM0 -I ../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I ../Drivers/CMSIS/Include -I ../COCOLIB/ESP8266 -I ../COCOInclude -I ../COCOTASK -I ../COCOLIB/W5500_TCPC -I ../FreeModbus/modbus/ascii -I ../FreeModbus/modbus/functions -I ../FreeModbus/modbus/include -I ../FreeModbus/modbus/tcp -I ../FreeModbus/modbus/rtu -I ../FreeModbus/port_fm -I ../COCOLIB/W25Q64 -I ../COCOLIB/BL8025-I.\RTE\_001-IC:\Users\Administrator\AppData\Local\Arm\Packs\ARM\CMSIS\5.8.0\CMSIS\Core\Include-IC:\Users\Administrator\AppData\Local\Arm\Packs\Keil\STM32F0xx_DFP\2.1.0\Drivers\CMSIS\Device\ST\STM32F0xx\Include-D__UVISION_VERSION="535" -D_RTE_ -DSTM32F030xC -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F030xC-o 001\w5500sendtask.o --omf_browse 001\w5500sendtask.crf --depend 001\w5500sendtask.d)
+F (..\COCOTASK\W5500SendTask.c)(0x64488A25)(--c99 -c --cpu Cortex-M0 -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F0xx_HAL_Driver/Inc -I ../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM0 -I ../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I ../Drivers/CMSIS/Include -I ../COCOLIB/ESP8266 -I ../COCOInclude -I ../COCOTASK -I ../COCOLIB/W5500_TCPC -I ../FreeModbus/modbus/ascii -I ../FreeModbus/modbus/functions -I ../FreeModbus/modbus/include -I ../FreeModbus/modbus/tcp -I ../FreeModbus/modbus/rtu -I ../FreeModbus/port_fm -I ../COCOLIB/W25Q64 -I ../COCOLIB/BL8025-I.\RTE\_001-IC:\Users\Administrator\AppData\Local\Arm\Packs\ARM\CMSIS\5.8.0\CMSIS\Core\Include-IC:\Users\Administrator\AppData\Local\Arm\Packs\Keil\STM32F0xx_DFP\2.1.0\Drivers\CMSIS\Device\ST\STM32F0xx\Include-D__UVISION_VERSION="535" -D_RTE_ -DSTM32F030xC -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F030xC-o 001\w5500sendtask.o --omf_browse 001\w5500sendtask.crf --depend 001\w5500sendtask.d)
 I (..\COCOTASK\W5500SendTask.h)(0x6430C862)
 I (../COCOInclude/myinclude.h)(0x6437A006)
 I (C:\MDK535\ARM\ARMCC\include\stdio.h)(0x60252374)
@@ -1160,7 +1160,7 @@ I (../Core/Inc/usart.h)(0x643778FF)
 I (../Core/Inc/gpio.h)(0x641D523A)
 I (../COCOLIB/ESP8266/atk_mw8266d.h)(0x642FC159)
 I (../COCOLIB/ESP8266/atk_mw8266d_uart.h)(0x6434F5C7)
-I (../COCOInclude/globalVariable.h)(0x6446416B)
+I (../COCOInclude/globalVariable.h)(0x6449CB70)
 I (../COCOTASK/COCO_StartOsTaskSub.h)(0x643F53C2)
 I (../COCOTASK/KeyTask.h)(0x6421565D)
 I (../COCOTASK/KeyTimerTask.h)(0x64215ECE)
@@ -1180,7 +1180,7 @@ I (C:\MDK535\ARM\ARMCC\include\inttypes.h)(0x6025237E)
 I (../COCOLIB/W5500_TCPC/socket.h)(0x643F5814)
 I (../COCOLIB/W5500_TCPC/Types.h)(0x63BE635B)
 F (..\COCOTASK\W5500SendTask.h)(0x6430C862)()
-F (..\COCOTASK\powerDownDoTask.c)(0x6445F2D1)(--c99 -c --cpu Cortex-M0 -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F0xx_HAL_Driver/Inc -I ../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM0 -I ../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I ../Drivers/CMSIS/Include -I ../COCOLIB/ESP8266 -I ../COCOInclude -I ../COCOTASK -I ../COCOLIB/W5500_TCPC -I ../FreeModbus/modbus/ascii -I ../FreeModbus/modbus/functions -I ../FreeModbus/modbus/include -I ../FreeModbus/modbus/tcp -I ../FreeModbus/modbus/rtu -I ../FreeModbus/port_fm -I ../COCOLIB/W25Q64 -I ../COCOLIB/BL8025-I.\RTE\_001-IC:\Users\Administrator\AppData\Local\Arm\Packs\ARM\CMSIS\5.8.0\CMSIS\Core\Include-IC:\Users\Administrator\AppData\Local\Arm\Packs\Keil\STM32F0xx_DFP\2.1.0\Drivers\CMSIS\Device\ST\STM32F0xx\Include-D__UVISION_VERSION="535" -D_RTE_ -DSTM32F030xC -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F030xC-o 001\powerdowndotask.o --omf_browse 001\powerdowndotask.crf --depend 001\powerdowndotask.d)
+F (..\COCOTASK\powerDownDoTask.c)(0x64488DD3)(--c99 -c --cpu Cortex-M0 -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F0xx_HAL_Driver/Inc -I ../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM0 -I ../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I ../Drivers/CMSIS/Include -I ../COCOLIB/ESP8266 -I ../COCOInclude -I ../COCOTASK -I ../COCOLIB/W5500_TCPC -I ../FreeModbus/modbus/ascii -I ../FreeModbus/modbus/functions -I ../FreeModbus/modbus/include -I ../FreeModbus/modbus/tcp -I ../FreeModbus/modbus/rtu -I ../FreeModbus/port_fm -I ../COCOLIB/W25Q64 -I ../COCOLIB/BL8025-I.\RTE\_001-IC:\Users\Administrator\AppData\Local\Arm\Packs\ARM\CMSIS\5.8.0\CMSIS\Core\Include-IC:\Users\Administrator\AppData\Local\Arm\Packs\Keil\STM32F0xx_DFP\2.1.0\Drivers\CMSIS\Device\ST\STM32F0xx\Include-D__UVISION_VERSION="535" -D_RTE_ -DSTM32F030xC -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F030xC-o 001\powerdowndotask.o --omf_browse 001\powerdowndotask.crf --depend 001\powerdowndotask.d)
 I (..\COCOTASK\powerDownDoTask.h)(0x642E25D0)
 I (../COCOInclude/myinclude.h)(0x6437A006)
 I (C:\MDK535\ARM\ARMCC\include\stdio.h)(0x60252374)
@@ -1236,7 +1236,7 @@ I (../Core/Inc/usart.h)(0x643778FF)
 I (../Core/Inc/gpio.h)(0x641D523A)
 I (../COCOLIB/ESP8266/atk_mw8266d.h)(0x642FC159)
 I (../COCOLIB/ESP8266/atk_mw8266d_uart.h)(0x6434F5C7)
-I (../COCOInclude/globalVariable.h)(0x6446416B)
+I (../COCOInclude/globalVariable.h)(0x6449CB70)
 I (../COCOTASK/COCO_StartOsTaskSub.h)(0x643F53C2)
 I (../COCOTASK/KeyTask.h)(0x6421565D)
 I (../COCOTASK/KeyTimerTask.h)(0x64215ECE)
@@ -1310,7 +1310,7 @@ I (../Core/Inc/usart.h)(0x643778FF)
 I (../Core/Inc/gpio.h)(0x641D523A)
 I (../COCOLIB/ESP8266/atk_mw8266d.h)(0x642FC159)
 I (../COCOLIB/ESP8266/atk_mw8266d_uart.h)(0x6434F5C7)
-I (../COCOInclude/globalVariable.h)(0x6446416B)
+I (../COCOInclude/globalVariable.h)(0x6449CB70)
 I (../COCOTASK/COCO_StartOsTaskSub.h)(0x643F53C2)
 I (../COCOTASK/KeyTask.h)(0x6421565D)
 I (../COCOTASK/KeyTimerTask.h)(0x64215ECE)
@@ -1387,7 +1387,7 @@ I (../Core/Inc/usart.h)(0x643778FF)
 I (../Core/Inc/gpio.h)(0x641D523A)
 I (../COCOLIB/ESP8266/atk_mw8266d.h)(0x642FC159)
 I (../COCOLIB/ESP8266/atk_mw8266d_uart.h)(0x6434F5C7)
-I (../COCOInclude/globalVariable.h)(0x6446416B)
+I (../COCOInclude/globalVariable.h)(0x6449CB70)
 I (../COCOTASK/COCO_StartOsTaskSub.h)(0x643F53C2)
 I (../COCOTASK/KeyTask.h)(0x6421565D)
 I (../COCOTASK/KeyTimerTask.h)(0x64215ECE)
@@ -1405,7 +1405,7 @@ I (../FreeModbus/port_fm/port_fm.h)(0x643F8957)
 I (C:\MDK535\ARM\ARMCC\include\assert.h)(0x60252378)
 I (C:\MDK535\ARM\ARMCC\include\inttypes.h)(0x6025237E)
 F (..\COCOTASK\monitoringTask.h)(0x64379F4D)()
-F (..\COCOLIB\ESP8266\atk_mw8266d.c)(0x64472048)(--c99 -c --cpu Cortex-M0 -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F0xx_HAL_Driver/Inc -I ../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM0 -I ../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I ../Drivers/CMSIS/Include -I ../COCOLIB/ESP8266 -I ../COCOInclude -I ../COCOTASK -I ../COCOLIB/W5500_TCPC -I ../FreeModbus/modbus/ascii -I ../FreeModbus/modbus/functions -I ../FreeModbus/modbus/include -I ../FreeModbus/modbus/tcp -I ../FreeModbus/modbus/rtu -I ../FreeModbus/port_fm -I ../COCOLIB/W25Q64 -I ../COCOLIB/BL8025-I.\RTE\_001-IC:\Users\Administrator\AppData\Local\Arm\Packs\ARM\CMSIS\5.8.0\CMSIS\Core\Include-IC:\Users\Administrator\AppData\Local\Arm\Packs\Keil\STM32F0xx_DFP\2.1.0\Drivers\CMSIS\Device\ST\STM32F0xx\Include-D__UVISION_VERSION="535" -D_RTE_ -DSTM32F030xC -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F030xC-o 001\atk_mw8266d.o --omf_browse 001\atk_mw8266d.crf --depend 001\atk_mw8266d.d)
+F (..\COCOLIB\ESP8266\atk_mw8266d.c)(0x6449CEC1)(--c99 -c --cpu Cortex-M0 -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F0xx_HAL_Driver/Inc -I ../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM0 -I ../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I ../Drivers/CMSIS/Include -I ../COCOLIB/ESP8266 -I ../COCOInclude -I ../COCOTASK -I ../COCOLIB/W5500_TCPC -I ../FreeModbus/modbus/ascii -I ../FreeModbus/modbus/functions -I ../FreeModbus/modbus/include -I ../FreeModbus/modbus/tcp -I ../FreeModbus/modbus/rtu -I ../FreeModbus/port_fm -I ../COCOLIB/W25Q64 -I ../COCOLIB/BL8025-I.\RTE\_001-IC:\Users\Administrator\AppData\Local\Arm\Packs\ARM\CMSIS\5.8.0\CMSIS\Core\Include-IC:\Users\Administrator\AppData\Local\Arm\Packs\Keil\STM32F0xx_DFP\2.1.0\Drivers\CMSIS\Device\ST\STM32F0xx\Include-D__UVISION_VERSION="535" -D_RTE_ -DSTM32F030xC -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F030xC-o 001\atk_mw8266d.o --omf_browse 001\atk_mw8266d.crf --depend 001\atk_mw8266d.d)
 I (..\COCOLIB\ESP8266\atk_mw8266d.h)(0x642FC159)
 I (..\COCOLIB\ESP8266\atk_mw8266d_uart.h)(0x6434F5C7)
 I (../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h)(0x641D5202)
@@ -1460,7 +1460,7 @@ I (C:\MDK535\ARM\ARMCC\include\stdlib.h)(0x60252374)
 I (C:\MDK535\ARM\ARMCC\include\stdarg.h)(0x60252376)
 I (../Core/Inc/usart.h)(0x643778FF)
 I (../Core/Inc/gpio.h)(0x641D523A)
-I (../COCOInclude/globalVariable.h)(0x6446416B)
+I (../COCOInclude/globalVariable.h)(0x6449CB70)
 I (../COCOTASK/COCO_StartOsTaskSub.h)(0x643F53C2)
 I (../COCOTASK/KeyTask.h)(0x6421565D)
 I (../COCOTASK/KeyTimerTask.h)(0x64215ECE)
@@ -1588,7 +1588,7 @@ I (../Core/Inc/usart.h)(0x643778FF)
 I (../Core/Inc/gpio.h)(0x641D523A)
 I (../COCOLIB/ESP8266/atk_mw8266d.h)(0x642FC159)
 I (../COCOLIB/ESP8266/atk_mw8266d_uart.h)(0x6434F5C7)
-I (../COCOInclude/globalVariable.h)(0x6446416B)
+I (../COCOInclude/globalVariable.h)(0x6449CB70)
 I (../COCOTASK/COCO_StartOsTaskSub.h)(0x643F53C2)
 I (../COCOTASK/KeyTask.h)(0x6421565D)
 I (../COCOTASK/KeyTimerTask.h)(0x64215ECE)
@@ -1666,7 +1666,7 @@ I (../Core/Inc/usart.h)(0x643778FF)
 I (../Core/Inc/gpio.h)(0x641D523A)
 I (../COCOLIB/ESP8266/atk_mw8266d.h)(0x642FC159)
 I (../COCOLIB/ESP8266/atk_mw8266d_uart.h)(0x6434F5C7)
-I (../COCOInclude/globalVariable.h)(0x6446416B)
+I (../COCOInclude/globalVariable.h)(0x6449CB70)
 I (../COCOTASK/COCO_StartOsTaskSub.h)(0x643F53C2)
 I (../COCOTASK/KeyTask.h)(0x6421565D)
 I (../COCOTASK/KeyTimerTask.h)(0x64215ECE)
@@ -1743,7 +1743,7 @@ I (../Core/Inc/usart.h)(0x643778FF)
 I (../Core/Inc/gpio.h)(0x641D523A)
 I (../COCOLIB/ESP8266/atk_mw8266d.h)(0x642FC159)
 I (../COCOLIB/ESP8266/atk_mw8266d_uart.h)(0x6434F5C7)
-I (../COCOInclude/globalVariable.h)(0x6446416B)
+I (../COCOInclude/globalVariable.h)(0x6449CB70)
 I (../COCOTASK/COCO_StartOsTaskSub.h)(0x643F53C2)
 I (../COCOTASK/KeyTask.h)(0x6421565D)
 I (../COCOTASK/KeyTimerTask.h)(0x64215ECE)
@@ -1820,7 +1820,7 @@ I (../Core/Inc/usart.h)(0x643778FF)
 I (../Core/Inc/gpio.h)(0x641D523A)
 I (../COCOLIB/ESP8266/atk_mw8266d.h)(0x642FC159)
 I (../COCOLIB/ESP8266/atk_mw8266d_uart.h)(0x6434F5C7)
-I (../COCOInclude/globalVariable.h)(0x6446416B)
+I (../COCOInclude/globalVariable.h)(0x6449CB70)
 I (../COCOTASK/COCO_StartOsTaskSub.h)(0x643F53C2)
 I (../COCOTASK/KeyTask.h)(0x6421565D)
 I (../COCOTASK/KeyTimerTask.h)(0x64215ECE)
@@ -1898,7 +1898,7 @@ I (../Core/Inc/usart.h)(0x643778FF)
 I (../Core/Inc/gpio.h)(0x641D523A)
 I (../COCOLIB/ESP8266/atk_mw8266d.h)(0x642FC159)
 I (../COCOLIB/ESP8266/atk_mw8266d_uart.h)(0x6434F5C7)
-I (../COCOInclude/globalVariable.h)(0x6446416B)
+I (../COCOInclude/globalVariable.h)(0x6449CB70)
 I (../COCOTASK/COCO_StartOsTaskSub.h)(0x643F53C2)
 I (../COCOTASK/KeyTask.h)(0x6421565D)
 I (../COCOTASK/KeyTimerTask.h)(0x64215ECE)
@@ -1978,7 +1978,7 @@ I (../Core/Inc/usart.h)(0x643778FF)
 I (../Core/Inc/gpio.h)(0x641D523A)
 I (../COCOLIB/ESP8266/atk_mw8266d.h)(0x642FC159)
 I (../COCOLIB/ESP8266/atk_mw8266d_uart.h)(0x6434F5C7)
-I (../COCOInclude/globalVariable.h)(0x6446416B)
+I (../COCOInclude/globalVariable.h)(0x6449CB70)
 I (../COCOTASK/COCO_StartOsTaskSub.h)(0x643F53C2)
 I (../COCOTASK/KeyTask.h)(0x6421565D)
 I (../COCOTASK/KeyTimerTask.h)(0x64215ECE)
@@ -2056,7 +2056,7 @@ I (../Core/Inc/usart.h)(0x643778FF)
 I (../Core/Inc/gpio.h)(0x641D523A)
 I (../COCOLIB/ESP8266/atk_mw8266d.h)(0x642FC159)
 I (../COCOLIB/ESP8266/atk_mw8266d_uart.h)(0x6434F5C7)
-I (../COCOInclude/globalVariable.h)(0x6446416B)
+I (../COCOInclude/globalVariable.h)(0x6449CB70)
 I (../COCOTASK/COCO_StartOsTaskSub.h)(0x643F53C2)
 I (../COCOTASK/KeyTask.h)(0x6421565D)
 I (../COCOTASK/KeyTimerTask.h)(0x64215ECE)
@@ -2130,7 +2130,7 @@ I (../Core/Inc/usart.h)(0x643778FF)
 I (../Core/Inc/gpio.h)(0x641D523A)
 I (../COCOLIB/ESP8266/atk_mw8266d.h)(0x642FC159)
 I (../COCOLIB/ESP8266/atk_mw8266d_uart.h)(0x6434F5C7)
-I (../COCOInclude/globalVariable.h)(0x6446416B)
+I (../COCOInclude/globalVariable.h)(0x6449CB70)
 I (../COCOTASK/COCO_StartOsTaskSub.h)(0x643F53C2)
 I (../COCOTASK/KeyTask.h)(0x6421565D)
 I (../COCOTASK/KeyTimerTask.h)(0x64215ECE)
@@ -2206,7 +2206,7 @@ I (../Core/Inc/usart.h)(0x643778FF)
 I (../Core/Inc/gpio.h)(0x641D523A)
 I (../COCOLIB/ESP8266/atk_mw8266d.h)(0x642FC159)
 I (../COCOLIB/ESP8266/atk_mw8266d_uart.h)(0x6434F5C7)
-I (../COCOInclude/globalVariable.h)(0x6446416B)
+I (../COCOInclude/globalVariable.h)(0x6449CB70)
 I (../COCOTASK/COCO_StartOsTaskSub.h)(0x643F53C2)
 I (../COCOTASK/KeyTask.h)(0x6421565D)
 I (../COCOTASK/KeyTimerTask.h)(0x64215ECE)
@@ -2283,7 +2283,7 @@ I (../Core/Inc/usart.h)(0x643778FF)
 I (../Core/Inc/gpio.h)(0x641D523A)
 I (../COCOLIB/ESP8266/atk_mw8266d.h)(0x642FC159)
 I (../COCOLIB/ESP8266/atk_mw8266d_uart.h)(0x6434F5C7)
-I (../COCOInclude/globalVariable.h)(0x6446416B)
+I (../COCOInclude/globalVariable.h)(0x6449CB70)
 I (../COCOTASK/COCO_StartOsTaskSub.h)(0x643F53C2)
 I (../COCOTASK/KeyTask.h)(0x6421565D)
 I (../COCOTASK/KeyTimerTask.h)(0x64215ECE)
@@ -2364,7 +2364,7 @@ I (../Core/Inc/usart.h)(0x643778FF)
 I (../Core/Inc/gpio.h)(0x641D523A)
 I (../COCOLIB/ESP8266/atk_mw8266d.h)(0x642FC159)
 I (../COCOLIB/ESP8266/atk_mw8266d_uart.h)(0x6434F5C7)
-I (../COCOInclude/globalVariable.h)(0x6446416B)
+I (../COCOInclude/globalVariable.h)(0x6449CB70)
 I (../COCOTASK/COCO_StartOsTaskSub.h)(0x643F53C2)
 I (../COCOTASK/KeyTask.h)(0x6421565D)
 I (../COCOTASK/KeyTimerTask.h)(0x64215ECE)
@@ -2440,7 +2440,7 @@ I (../Core/Inc/usart.h)(0x643778FF)
 I (../Core/Inc/gpio.h)(0x641D523A)
 I (../COCOLIB/ESP8266/atk_mw8266d.h)(0x642FC159)
 I (../COCOLIB/ESP8266/atk_mw8266d_uart.h)(0x6434F5C7)
-I (../COCOInclude/globalVariable.h)(0x6446416B)
+I (../COCOInclude/globalVariable.h)(0x6449CB70)
 I (../COCOTASK/COCO_StartOsTaskSub.h)(0x643F53C2)
 I (../COCOTASK/KeyTask.h)(0x6421565D)
 I (../COCOTASK/KeyTimerTask.h)(0x64215ECE)
@@ -2517,7 +2517,7 @@ I (../Core/Inc/usart.h)(0x643778FF)
 I (../Core/Inc/gpio.h)(0x641D523A)
 I (../COCOLIB/ESP8266/atk_mw8266d.h)(0x642FC159)
 I (../COCOLIB/ESP8266/atk_mw8266d_uart.h)(0x6434F5C7)
-I (../COCOInclude/globalVariable.h)(0x6446416B)
+I (../COCOInclude/globalVariable.h)(0x6449CB70)
 I (../COCOTASK/COCO_StartOsTaskSub.h)(0x643F53C2)
 I (../COCOTASK/KeyTask.h)(0x6421565D)
 I (../COCOTASK/KeyTimerTask.h)(0x64215ECE)
@@ -2591,7 +2591,7 @@ I (../Core/Inc/usart.h)(0x643778FF)
 I (../Core/Inc/gpio.h)(0x641D523A)
 I (../COCOLIB/ESP8266/atk_mw8266d.h)(0x642FC159)
 I (../COCOLIB/ESP8266/atk_mw8266d_uart.h)(0x6434F5C7)
-I (../COCOInclude/globalVariable.h)(0x6446416B)
+I (../COCOInclude/globalVariable.h)(0x6449CB70)
 I (../COCOTASK/COCO_StartOsTaskSub.h)(0x643F53C2)
 I (../COCOTASK/KeyTask.h)(0x6421565D)
 I (../COCOTASK/KeyTimerTask.h)(0x64215ECE)
@@ -2671,7 +2671,7 @@ I (../Core/Inc/usart.h)(0x643778FF)
 I (../Core/Inc/gpio.h)(0x641D523A)
 I (../COCOLIB/ESP8266/atk_mw8266d.h)(0x642FC159)
 I (../COCOLIB/ESP8266/atk_mw8266d_uart.h)(0x6434F5C7)
-I (../COCOInclude/globalVariable.h)(0x6446416B)
+I (../COCOInclude/globalVariable.h)(0x6449CB70)
 I (../COCOTASK/COCO_StartOsTaskSub.h)(0x643F53C2)
 I (../COCOTASK/KeyTask.h)(0x6421565D)
 I (../COCOTASK/KeyTimerTask.h)(0x64215ECE)
@@ -2750,7 +2750,7 @@ I (../Core/Inc/usart.h)(0x643778FF)
 I (../Core/Inc/gpio.h)(0x641D523A)
 I (../COCOLIB/ESP8266/atk_mw8266d.h)(0x642FC159)
 I (../COCOLIB/ESP8266/atk_mw8266d_uart.h)(0x6434F5C7)
-I (../COCOInclude/globalVariable.h)(0x6446416B)
+I (../COCOInclude/globalVariable.h)(0x6449CB70)
 I (../COCOTASK/COCO_StartOsTaskSub.h)(0x643F53C2)
 I (../COCOTASK/KeyTask.h)(0x6421565D)
 I (../COCOTASK/KeyTimerTask.h)(0x64215ECE)
@@ -2828,7 +2828,7 @@ I (../Core/Inc/usart.h)(0x643778FF)
 I (../Core/Inc/gpio.h)(0x641D523A)
 I (../COCOLIB/ESP8266/atk_mw8266d.h)(0x642FC159)
 I (../COCOLIB/ESP8266/atk_mw8266d_uart.h)(0x6434F5C7)
-I (../COCOInclude/globalVariable.h)(0x6446416B)
+I (../COCOInclude/globalVariable.h)(0x6449CB70)
 I (../COCOTASK/COCO_StartOsTaskSub.h)(0x643F53C2)
 I (../COCOTASK/KeyTask.h)(0x6421565D)
 I (../COCOTASK/KeyTimerTask.h)(0x64215ECE)
@@ -2905,7 +2905,7 @@ I (../Core/Inc/usart.h)(0x643778FF)
 I (../Core/Inc/gpio.h)(0x641D523A)
 I (../COCOLIB/ESP8266/atk_mw8266d.h)(0x642FC159)
 I (../COCOLIB/ESP8266/atk_mw8266d_uart.h)(0x6434F5C7)
-I (../COCOInclude/globalVariable.h)(0x6446416B)
+I (../COCOInclude/globalVariable.h)(0x6449CB70)
 I (../COCOTASK/COCO_StartOsTaskSub.h)(0x643F53C2)
 I (../COCOTASK/KeyTask.h)(0x6421565D)
 I (../COCOTASK/KeyTimerTask.h)(0x64215ECE)
@@ -2982,7 +2982,7 @@ I (../Core/Inc/usart.h)(0x643778FF)
 I (../Core/Inc/gpio.h)(0x641D523A)
 I (../COCOLIB/ESP8266/atk_mw8266d.h)(0x642FC159)
 I (../COCOLIB/ESP8266/atk_mw8266d_uart.h)(0x6434F5C7)
-I (../COCOInclude/globalVariable.h)(0x6446416B)
+I (../COCOInclude/globalVariable.h)(0x6449CB70)
 I (../COCOTASK/COCO_StartOsTaskSub.h)(0x643F53C2)
 I (../COCOTASK/KeyTask.h)(0x6421565D)
 I (../COCOTASK/KeyTimerTask.h)(0x64215ECE)
@@ -3059,7 +3059,7 @@ I (../Core/Inc/usart.h)(0x643778FF)
 I (../Core/Inc/gpio.h)(0x641D523A)
 I (../COCOLIB/ESP8266/atk_mw8266d.h)(0x642FC159)
 I (../COCOLIB/ESP8266/atk_mw8266d_uart.h)(0x6434F5C7)
-I (../COCOInclude/globalVariable.h)(0x6446416B)
+I (../COCOInclude/globalVariable.h)(0x6449CB70)
 I (../COCOTASK/COCO_StartOsTaskSub.h)(0x643F53C2)
 I (../COCOTASK/KeyTask.h)(0x6421565D)
 I (../COCOTASK/KeyTimerTask.h)(0x64215ECE)
@@ -3136,7 +3136,7 @@ I (../Core/Inc/usart.h)(0x643778FF)
 I (../Core/Inc/gpio.h)(0x641D523A)
 I (../COCOLIB/ESP8266/atk_mw8266d.h)(0x642FC159)
 I (../COCOLIB/ESP8266/atk_mw8266d_uart.h)(0x6434F5C7)
-I (../COCOInclude/globalVariable.h)(0x6446416B)
+I (../COCOInclude/globalVariable.h)(0x6449CB70)
 I (../COCOTASK/COCO_StartOsTaskSub.h)(0x643F53C2)
 I (../COCOTASK/KeyTask.h)(0x6421565D)
 I (../COCOTASK/KeyTimerTask.h)(0x64215ECE)
@@ -3211,7 +3211,7 @@ I (../Core/Inc/usart.h)(0x643778FF)
 I (../Core/Inc/gpio.h)(0x641D523A)
 I (../COCOLIB/ESP8266/atk_mw8266d.h)(0x642FC159)
 I (../COCOLIB/ESP8266/atk_mw8266d_uart.h)(0x6434F5C7)
-I (../COCOInclude/globalVariable.h)(0x6446416B)
+I (../COCOInclude/globalVariable.h)(0x6449CB70)
 I (../COCOTASK/COCO_StartOsTaskSub.h)(0x643F53C2)
 I (../COCOTASK/KeyTask.h)(0x6421565D)
 I (../COCOTASK/KeyTimerTask.h)(0x64215ECE)
@@ -3283,7 +3283,7 @@ I (../Core/Inc/usart.h)(0x643778FF)
 I (../Core/Inc/gpio.h)(0x641D523A)
 I (../COCOLIB/ESP8266/atk_mw8266d.h)(0x642FC159)
 I (../COCOLIB/ESP8266/atk_mw8266d_uart.h)(0x6434F5C7)
-I (../COCOInclude/globalVariable.h)(0x6446416B)
+I (../COCOInclude/globalVariable.h)(0x6449CB70)
 I (../COCOTASK/COCO_StartOsTaskSub.h)(0x643F53C2)
 I (../COCOTASK/KeyTask.h)(0x6421565D)
 I (../COCOTASK/KeyTimerTask.h)(0x64215ECE)
@@ -3361,7 +3361,7 @@ I (../Core/Inc/usart.h)(0x643778FF)
 I (../Core/Inc/gpio.h)(0x641D523A)
 I (../COCOLIB/ESP8266/atk_mw8266d.h)(0x642FC159)
 I (../COCOLIB/ESP8266/atk_mw8266d_uart.h)(0x6434F5C7)
-I (../COCOInclude/globalVariable.h)(0x6446416B)
+I (../COCOInclude/globalVariable.h)(0x6449CB70)
 I (../COCOTASK/COCO_StartOsTaskSub.h)(0x643F53C2)
 I (../COCOTASK/KeyTask.h)(0x6421565D)
 I (../COCOTASK/KeyTimerTask.h)(0x64215ECE)

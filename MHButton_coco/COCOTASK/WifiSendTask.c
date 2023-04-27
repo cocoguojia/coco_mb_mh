@@ -88,7 +88,7 @@ void WifiSendTask(void *argument)
                     g_atk_mw8266d_send_CIPSEND_cmd(at_buff,"OK",200);  //发送指定长度的数据  /100
                     osDelay(50); //50
                     HAL_UART_Transmit(&huart4,(&g_wifiSendbuff[msg][2]), lenNum, 10);
-                    osDelay(200); //0
+                    osDelay(100); //0
 //                     statusDat=HAL_UART_Transmit(&huart4,(&g_wifiSendbuff[msg][2]), lenNum, 10);
 //                     do
 //                     {
@@ -106,7 +106,7 @@ void WifiSendTask(void *argument)
                     ;
                 }   
             }
-            else if((0XA1==msg)||(0XB1==msg)||(0XB2==msg)||(0XC1==msg)||(0XC2==msg)||(0XD1==msg)||(0XD2==msg))
+            else if((0XA1==msg)||(0XA2==msg)||(0XB1==msg)||(0XB2==msg)||(0XC1==msg)||(0XC2==msg)||(0XD1==msg)||(0XD2==msg))
             {
                 g_showCmdH(msg,2);
   

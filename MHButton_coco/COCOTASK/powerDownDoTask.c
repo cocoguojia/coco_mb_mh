@@ -107,7 +107,7 @@ void PowerDownFrontSaveParameter(void)
     //##############################################################################################
     //互斥操作
     osMutexAcquire(W25q64MutexHandle, osWaitForever);   //一直等待获取互斥资源 
-    //W25Q128_Erase_Sector(WQ_PAGE_SW5ROAD3); //上电已经擦除或者已经全为0XFFFF 不用擦除 
+    W25Q128_Erase_Sector(WQ_PAGE_SW5ROAD3);             //写之前擦除
     W25Q128_Write(&save_Buffer[0],WQ_PAGE_SW5ROAD3,16); //时间紧 共8个16位 一共16个字节
     osMutexRelease(W25q64MutexHandle);                  //释放互斥资源    
     //##############################################################################################    

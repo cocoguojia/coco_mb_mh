@@ -4,7 +4,7 @@
 
 #include "myinclude.h"
 
-#define FIRST_PARAAMETER 0XAC
+#define FIRST_PARAAMETER 0X56
 
 //-----------------------------------------------------------------------------------------------------------------
 //如果使能锂电池切断功能 请预定义POWER_BATTERY_MANAGEMENT  否则 屏蔽POWER_BATTERY_MANAGEMENT的预定义
@@ -111,6 +111,8 @@ extern uint8_t g_readingRX8025TimerFlag;//0=当前时间可以占用 注意占用就置位 然后
 extern uint8_t g_w5500EnFlag;   //1=W5500模块使能
 extern uint8_t g_wifiEnFlag;     //1=Wifi模块使能
 
+extern uint8_t g_wifi_receive_data_num; //接收到的新数据的次数  由g_atk_mw8266d_monitor函数 负责先关处理并且清零
+
 
 //-------------------------------------------------------------------
 //net数据桥接Modbus的 消息队列句柄
@@ -196,6 +198,7 @@ extern osMutexId_t W25q64MutexHandle;
 extern const uint8_t wdth_showTable0[];
 extern const uint8_t wdth_showTable1[];
 extern const uint8_t wdth_showTable2[];
+extern const uint8_t wdth_showTable3[];
 
 extern const uint8_t w5500h_showTable0[];
 extern const uint8_t w5500h_showTable1[];

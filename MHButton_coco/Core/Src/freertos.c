@@ -397,7 +397,7 @@ void PowerOnAfterReadParameter(void)
 {
 
     uint8_t m;   
-    uint8_t clearFlag=0;//1=发生了断电 读完参后 我清零 
+//    uint8_t clearFlag=0;//1=发生了断电 读完参后 我清零 
     uint8_t table[30];
  
     //##############################################################################################
@@ -429,23 +429,23 @@ void PowerOnAfterReadParameter(void)
                 App_Printf("$$ read_buffU16[%d] clear 0 \r\n",m/2);
                 read_buffU16[m/2]=0;
             }
-            else
-            {
-                clearFlag=1;
-            }
+//            else
+//            {
+//                clearFlag=1;
+//            }
             m++;            
         }
         
-        if(1==clearFlag)
-        {
-            clearFlag=0;
-            //##############################################################################################
-            //互斥操作
-            osMutexAcquire(W25q64MutexHandle, osWaitForever);   //一直等待获取互斥资源        
-            W25Q128_Erase_Sector(WQ_PAGE_SW5ROAD3);  
-            osMutexRelease(W25q64MutexHandle);                  //释放互斥资源    
-            //##############################################################################################
-        }
+//        if(1==clearFlag)
+//        {
+//            clearFlag=0;
+//            //##############################################################################################
+//            //互斥操作
+//            osMutexAcquire(W25q64MutexHandle, osWaitForever);   //一直等待获取互斥资源        
+//            W25Q128_Erase_Sector(WQ_PAGE_SW5ROAD3);  
+//            osMutexRelease(W25q64MutexHandle);                  //释放互斥资源    
+//            //##############################################################################################
+//        }
         
         App_Printf("$$ ABC:\r\n");
         for(m=0;m<3;m++)
@@ -932,8 +932,10 @@ void TestClockClear_1000ms(void)
 //零点了,清零各个参数
 void ClearParameter(void)
 {
-    //uint8_t save_Buffer[20];
+    uint8_t read_buffU8[20];
+    uint16_t read_buffU16[10];
     uint8_t m;
+    uint8_t clearFlag=1;//1=flash区已经都是0xffff或者0 不用flash级别擦除了
   
     //##############################################################################################
     //互斥操作
@@ -956,15 +958,43 @@ void ClearParameter(void)
     osMutexRelease(ReadWriteRegHoldingMutexHandle);                  //释放互斥资源    
     //##############################################################################################  
     
-    osDelay(2);
+    osDelay(1);
+           
+    //##############################################################################################
+    //互斥操作
+    osMutexAcquire(W25q64MutexHandle, osWaitForever);   //一直等待获取互斥资源 
+    W25Q128_Read(&read_buffU8[0],WQ_PAGE_SW5ROAD3,16);
+    osMutexRelease(W25q64MutexHandle);                  //释放互斥资源    
+    //##############################################################################################
+     
+    for(m=0;m<16;)
+    {
+        read_buffU16[m/2]=read_buffU8[m];
+        read_buffU16[m/2]<<=8;
+        m++;
+        read_buffU16[m/2]+=read_buffU8[m];
+        if((0xffff==read_buffU16[m/2])||(0x00==read_buffU16[m/2]))
+        {
+            ;
+        }
+        else
+        {
+            clearFlag=0;
+        }
+        m++;            
+    }
     
-    ////##############################################################################################
-    ////互斥操作
-    //osMutexAcquire(W25q64MutexHandle, osWaitForever);   //一直等待获取互斥资源 
-    //W25Q128_Erase_Sector(WQ_PAGE_SW5ROAD3);  
-    //W25Q128_Write(&save_Buffer[0],WQ_PAGE_SW5ROAD3,16);
-    //osMutexRelease(W25q64MutexHandle);                  //释放互斥资源    
-    ////##############################################################################################    
+    osDelay(1);
+    
+    if(0==clearFlag)//flash区不都为0或者0xff
+    {
+        //##############################################################################################
+        //互斥操作
+        osMutexAcquire(W25q64MutexHandle, osWaitForever);   //一直等待获取互斥资源     
+        W25Q128_Erase_Sector(WQ_PAGE_SW5ROAD3);             //擦除即可 上电判断是0xffff 就会转为0
+        osMutexRelease(W25q64MutexHandle);                  //释放互斥资源    
+        //##############################################################################################    
+    }
 }
              
 

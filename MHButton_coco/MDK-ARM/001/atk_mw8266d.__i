@@ -1,0 +1,6 @@
+--c99 -c --cpu Cortex-M0 -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F0xx_HAL_Driver/Inc -I ../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM0 -I ../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I ../Drivers/CMSIS/Include -I ../COCOLIB/ESP8266 -I ../COCOInclude -I ../COCOTASK -I ../COCOLIB/W5500_TCPC -I ../FreeModbus/modbus/ascii -I ../FreeModbus/modbus/functions -I ../FreeModbus/modbus/include -I ../FreeModbus/modbus/tcp -I ../FreeModbus/modbus/rtu -I ../FreeModbus/port_fm -I ../COCOLIB/W25Q64 -I ../COCOLIB/BL8025
+-I.\RTE\_001
+-IC:\Users\Administrator\AppData\Local\Arm\Packs\ARM\CMSIS\5.8.0\CMSIS\Core\Include
+-IC:\Users\Administrator\AppData\Local\Arm\Packs\Keil\STM32F0xx_DFP\2.1.0\Drivers\CMSIS\Device\ST\STM32F0xx\Include
+-D__UVISION_VERSION="535" -D_RTE_ -DSTM32F030xC -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F030xC
+-o 001\atk_mw8266d.o --omf_browse 001\atk_mw8266d.crf --depend 001\atk_mw8266d.d "..\COCOLIB\ESP8266\atk_mw8266d.c"

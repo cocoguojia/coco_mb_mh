@@ -102,10 +102,14 @@ uint8_t g_wifiEnFlag=1;//1=Wifi模块使能
 
 uint8_t g_dhcpip_staticip_flag=0;   //1=DHCP ip     0=STATIC ip
 
+uint8_t g_wifi_receive_data_num=0; //接收到的新数据的次数  由g_atk_mw8266d_monitor函数 负责先关处理并且清零
+
 
 const uint8_t wdth_showTable0[]="----------------wdt-----------------";
 const uint8_t wdth_showTable1[]="wdt h------ show wdt cmd";
 const uint8_t wdth_showTable2[]="wdt en <0/1> ------Reset(0-enable,1-disable)";
+
+const uint8_t wdth_showTable3[]="wdt en 1-->Device reset.Network disconnection immediately";
 
 const uint8_t w5500h_showTable0[]="---------------w5500-----------------";
 const uint8_t w5500h_showTable1[]="w5500 h--------------- show w5500 cmd";
